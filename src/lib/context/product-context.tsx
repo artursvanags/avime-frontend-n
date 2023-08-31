@@ -13,7 +13,7 @@ import React, {
 } from "react"
 import { Variant } from "@/types/medusa"
 import { useStore } from "./store-context"
-import { PricedProduct } from "@medusajs/medusa/dist/@/types/pricing"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 interface ProductContext {
   formattedPrice: string

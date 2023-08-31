@@ -8,7 +8,7 @@ import ProductInfo from "@/components/products/templates/product-info"
 import React, { useRef } from "react"
 import ImageGallery from "../components/image-gallary"
 import MobileActions from "../components/mobile-actions"
-import { PricedProduct } from "@medusajs/medusa/dist/@/types/pricing"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 type ProductTemplateProps = {
   product: PricedProduct

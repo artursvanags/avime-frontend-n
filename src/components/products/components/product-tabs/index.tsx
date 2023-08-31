@@ -1,6 +1,6 @@
 import { Tab } from "@headlessui/react"
 import { Product } from "@medusajs/medusa"
-import { PricedProduct } from "@medusajs/medusa/dist/@/types/pricing"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import Back from "@/components/common/icons/back"
 import FastDelivery from "@/components/common/icons/fast-delivery"
 import Refresh from "@/components/common/icons/refresh"

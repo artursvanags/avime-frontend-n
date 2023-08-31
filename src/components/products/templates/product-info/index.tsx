@@ -1,4 +1,4 @@
-import { PricedProduct } from "@medusajs/medusa/dist/@/types/pricing"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import ProductActions from "@/components/products/components/product-actions"
 import React from "react"
 import { Product } from "@/types/medusa"

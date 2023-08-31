@@ -1,6 +1,6 @@
 import { useProductActions } from "@/lib/context/product-context"
 import useProductPrice from "@/lib/hooks/use-product-price"
-import { PricedProduct } from "@medusajs/medusa/dist/@/types/pricing"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import Button from "@/components/common/components/button"
 import OptionSelect from "@/components/products/components/option-select"
 import clsx from "clsx"

@@ -9,7 +9,7 @@ import clsx from "clsx"
 import React, { Fragment, useMemo } from "react"
 import { Product } from "@/types/medusa"
 import OptionSelect from "../option-select"
-import { PricedProduct } from "@medusajs/medusa/dist/@/types/pricing"
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 type MobileActionsProps = {
   product: PricedProduct
