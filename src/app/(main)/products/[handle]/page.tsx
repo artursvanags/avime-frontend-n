@@ -1,5 +1,5 @@
 import medusaRequest from "@/lib/medusa-fetch"
-import ProductTemplate from "@/modules/products/templates"
+import ProductTemplate from "@/components/products/templates"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 

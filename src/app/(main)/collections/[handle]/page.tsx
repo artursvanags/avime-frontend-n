@@ -1,4 +1,4 @@
-import CollectionTemplate from "@/modules/collections/templates"
+import CollectionTemplate from "@/components/collections/templates"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 

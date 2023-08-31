@@ -1,12 +1,11 @@
-import '@/styles/global.css';
-import Providers from "@/modules/providers"
-import { ThemeProvider } from "@/modules/theme-provider"
+import "@/app/styles/global.css"
+import Providers from "@/components/providers"
+import { ThemeProvider } from "@/lib/theme-provider"
 
 import { Inter as FontSans } from "next/font/google"
 import localFont from "next/font/local"
 
 import { cn } from "@/lib/utils"
-
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,15 +22,16 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={cn(
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
           fontHeading.variable
-        )}>
+        )}
+      >
         <Providers>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <main className="relative">{children}</main>

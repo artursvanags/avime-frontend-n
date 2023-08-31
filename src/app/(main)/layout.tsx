@@ -1,5 +1,5 @@
-import Footer from "@/modules/layout/templates/footer"
-import Nav from "@/modules/layout/templates/nav"
+import Footer from "@/components/layout/templates/footer"
+import SiteHeader from "@/components/layout/templates/header/index"
 
 export default function PageLayout({
   children,
@@ -8,7 +8,7 @@ export default function PageLayout({
 }) {
   return (
     <>
-      <Nav />
+      <SiteHeader />
       {children}
       <Footer />
     </>
