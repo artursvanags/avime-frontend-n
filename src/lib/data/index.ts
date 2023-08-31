@@ -1,6 +1,6 @@
 import { medusaClient } from "@/lib/config"
 import { StoreGetProductsParams } from "@medusajs/medusa"
-import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { PricedProduct } from "@medusajs/medusa/dist/@/types/pricing"
 
 const COL_LIMIT = 15
 

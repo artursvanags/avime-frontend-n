@@ -1,6 +1,6 @@
 import { formatAmount, useCart, useProducts } from "medusa-react"
 import { useEffect, useMemo } from "react"
-import { CalculatedVariant } from "types/medusa"
+import { CalculatedVariant } from "@/types/medusa"
 
 type useProductPriceProps = {
   id: string

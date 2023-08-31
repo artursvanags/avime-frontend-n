@@ -45,3 +45,5 @@ node_modules
 
 .yarn
 .swc
+
+package-lock.json
