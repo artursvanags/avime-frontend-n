@@ -36,8 +36,8 @@ const NavMenu = () => {
       </Link>
 
       <nav className="flex items-center space-x-3 text-sm font-medium">
-        {links.map((l) => (
-          <Button asChild variant={CheckActive({ href: l.href }) ? "secondary" : "ghost"}>
+        {links.map((l, index) => (
+          <Button key={index} asChild variant={CheckActive({ href: l.href }) ? "secondary" : "ghost"}>
             <Link href={l.href}>{l.title}</Link>
           </Button>
 
