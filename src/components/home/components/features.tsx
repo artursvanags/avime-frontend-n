@@ -58,7 +58,7 @@ export default function Features() {
           <Card src="https://images.unsplash.com/photo-1538448728514-b19826b97c9c">
             <h3 className="pt-2 text-xl font-bold">Affordable</h3>
             <p className="text-sm text-muted-foreground">
-              Quality doesn't have to be out of reach. We have made sure that
+              Quality doesnt have to be out of reach. We have made sure that
               all of our products are qualitative without increasing the pricing
               dramatically. We have options for everyone.
             </p>
