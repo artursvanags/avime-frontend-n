@@ -5,7 +5,8 @@ import {
     Laptop,
     ShoppingCart,
     User,
-    Lock
+    Lock,
+    Store
  } from 'lucide-react';
 
 import Image from "next/image";
@@ -18,6 +19,7 @@ export const Icons = {
     logo: DefaultLogo,
     User: User,
     Access: Lock,
+    Store: Store,
     MyCart:ShoppingCart
 
 };
@@ -27,5 +29,3 @@ export const ThemeIcons = {
     Moon: Moon,
     System: Laptop
 };
-
-// ChevronsUpDown and User are not used in the code, so they can be removed

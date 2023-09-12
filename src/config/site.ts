@@ -1,8 +1,8 @@
-import { SiteConfig } from "@/types/index"
+import { SiteConfig, NavItem } from "@/types/index";
 
 export const siteConfig: SiteConfig = {
   name: "AVIME",
-  description:"A complete management kit for 3D printing systems.",
+  description: "A complete management kit for 3D printing systems.",
   developer: "Stellar Labs SIA",
   author: "Stellar Labs SIA",
   url: process.env.NEXT_PUBLIC_SITE_URL as string,
@@ -10,9 +10,20 @@ export const siteConfig: SiteConfig = {
   links: {
     facebook: "#",
   },
-  keywords: [
-    "3D Printing",
-    "3D",
-    "Printing",
-  ],
+  keywords: ["3D Printing", "3D", "Printing"],
 };
+
+export const NavigationConfig: NavItem[] = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Characters",
+    href: "/characters",
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+];

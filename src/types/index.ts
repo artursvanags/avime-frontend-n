@@ -1,24 +1,24 @@
 export type SiteConfig = {
-    name: string
-    description: string
-    developer: string
-    author: string
-    url: string
-    ogImage: string
-    links: {
-      facebook: string
-    }
-    keywords: string[]
-  }
+  name: string;
+  description: string;
+  developer: string;
+  author: string;
+  url: string;
+  ogImage: string;
+  links: {
+    facebook: string;
+  };
+  keywords: string[];
+};
 
-  export type NavItem = {
-    title: string
-    href: string
-    disabled?: boolean
-  }
-  
-  export type MainNavItem = NavItem 
+export type NavItem = {
+  title: string;
+  href: string;
+  disabled?: boolean;
+};
 
-  export type MarketingConfig = {
-    mainNav: MainNavItem[]
-  }
+export type MainNavItem = NavItem;
+
+export type MarketingConfig = {
+  mainNav: MainNavItem[];
+};

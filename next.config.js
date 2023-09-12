@@ -1,5 +1,5 @@
-const { withStoreConfig } = require("./store-config")
-const store = require("./store.config.json")
+const { withStoreConfig } = require("./store-config");
+const store = require("./store.config.json");
 
 module.exports = withStoreConfig({
   experimental: {
@@ -12,8 +12,9 @@ module.exports = withStoreConfig({
       "medusa-public-images.s3.eu-west-1.amazonaws.com",
       "localhost",
       "medusa-server-testing.s3.amazonaws.com",
+      "images.unsplash.com",
     ],
   },
-})
+});
 
-console.log("next.config.js", JSON.stringify(module.exports, null, 2))
+console.log("next.config.js", JSON.stringify(module.exports, null, 2));
