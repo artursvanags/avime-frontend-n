@@ -15,15 +15,11 @@ export const siteConfig: SiteConfig = {
 
 export const NavigationConfig: NavItem[] = [
   {
-    title: "Home",
-    href: "/",
+    title: "About Us",
+    href: "/about-us",
   },
   {
-    title: "Characters",
-    href: "/characters",
-  },
-  {
-    title: "About",
-    href: "/about",
+    title: "Contacts",
+    href: "/contacts",
   },
 ];

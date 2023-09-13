@@ -1,7 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
-import { ModeToggle } from "@/components/global/ThemeToggle";
+import ModeToggle from "@/components/global/ThemeToggleButton";
 
 const FooterNav = () => {
   const currentYear = new Date().getFullYear();

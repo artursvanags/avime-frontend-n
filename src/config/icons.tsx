@@ -6,6 +6,7 @@ import {
     ShoppingCart,
     User,
     Lock,
+    MenuIcon,
     Store
  } from 'lucide-react';
 
@@ -17,11 +18,11 @@ const DefaultLogo = () => (
 
 export const Icons = {
     logo: DefaultLogo,
+    HamburgerMenu:MenuIcon,
     User: User,
     Access: Lock,
     Store: Store,
     MyCart:ShoppingCart
-
 };
 
 export const ThemeIcons = {

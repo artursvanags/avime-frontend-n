@@ -1,12 +1,11 @@
 import PageHeader, {
   PageHeaderProps,
 } from "@/components/layout/templates/page-header";
-import ListProducts from "@/components/store/templates/ListProducts";
 import type { Metadata } from "next";
 
 const info: PageHeaderProps = {
-  title: "Store",
-  description: "View our current product catalog!",
+  title: "About Us",
+  description: "Get to know us better!",
 };
 
 export const metadata: Metadata = {
@@ -14,11 +13,10 @@ export const metadata: Metadata = {
   description: info.description,
 };
 
-export default function StorePage() {
+export default function AboutPage() {
   return (
     <>
       <PageHeader title={info.title} description={info.description} />
-      <ListProducts />
     </>
   );
 }
