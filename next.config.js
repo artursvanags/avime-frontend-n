@@ -13,6 +13,7 @@ module.exports = withStoreConfig({
       "localhost",
       "medusa-server-testing.s3.amazonaws.com",
       "images.unsplash.com",
+      "cdn.avime.au"
     ],
   },
 });
