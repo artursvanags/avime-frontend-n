@@ -68,8 +68,8 @@ export default function AboutPage() {
           new heights.
         </p>
         <p>
-          Thank you for choosing AVIME, where we're not just capturing moments;
-          we're creating legacies. Join us on this exciting journey of
+          Thank you for choosing AVIME, where we&apos;re not just capturing
+          moments; we're creating legacies. Join us on this exciting journey of
           transformation, and let's make school photography an art form that
           truly reflects the beauty and essence of your child's academic
           adventure.
