@@ -4,6 +4,7 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import Link from "next/link";
 import Grid from "@/components/global/grid";
 import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type CardProp = {
   products: (MedusaProduct | PricedProduct)[];
@@ -17,7 +18,7 @@ export function ProductCard({ products, loading }: CardProp) {
         <Grid.Item key={p.id}>
           <Link
             href={`/products/${p.handle}`}
-            className=" relative inline-block h-full w-full rounded border bg-stone-50 p-6 hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
+            className="relative inline-block h-full w-full rounded border bg-stone-50 p-6 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
           >
             <div className="relative aspect-square">
               <Image
