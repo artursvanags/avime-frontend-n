@@ -10,8 +10,7 @@ export default function Hero() {
           Elevating school photography <br /> to a new level.
         </h1>
         <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          Crafting comprehensive photography solutions for educational
-          institutions.
+        Making Australian schools great again, one photo at a time.
         </p>
         <div className="space-x-2">
           <Link href="/store" className={cn(buttonVariants({ size: "xl" }))}>
