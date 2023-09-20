@@ -35,7 +35,7 @@ export default function Features() {
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
         Setting a New Standard in School Photography!
         </h2>
-        <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+        <p className="max-w-[42rem] pt-2 leading-normal text-muted-foreground sm:text-xl sm:leading-8">
           We make it perfect in every photo
         </p>
         <div className="mx-auto grid grid-cols-1 justify-center gap-4 py-8 sm:grid-cols-3">

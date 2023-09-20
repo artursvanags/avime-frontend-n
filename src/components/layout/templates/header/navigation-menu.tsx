@@ -13,7 +13,6 @@ export default function Navigation({ menu }: { menu: NavItem[] }) {
 
   return (
     <div className="flex h-32 w-full items-center justify-center">
-      
       <nav className="mr-auto flex flex-1 space-x-3 text-sm font-medium">
         {menu.map((l, index) => (
           <Button
@@ -34,9 +33,11 @@ export default function Navigation({ menu }: { menu: NavItem[] }) {
       </Link>
 
       <div className="ml-auto flex flex-1 justify-end space-x-2">
-        <Button variant="outline">
-          <Icons.Store className="mr-2 h-4 w-4" />
-          Store
+        <Button asChild variant="outline">
+          <Link href="/store">
+            <Icons.Store className="mr-2 h-4 w-4" />
+            Store
+          </Link>
         </Button>
         <Button variant="outline">
           <Icons.Access className="mr-2 h-4 w-4" />
