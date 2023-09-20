@@ -8,8 +8,9 @@ import { ProductCardPackage } from "../components/ProductCardPackage";
 
 export default function ListProducts() {
   const { products, isLoading } = useProducts();
+
   return (
-    <div className="py-20">
+    <div className="py-14">
       {isLoading ? (
         <Grid className="container grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           <ProductCardSkeleton />

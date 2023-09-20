@@ -5,7 +5,7 @@ import ModeToggle from "@/components/global/ThemeToggleButton";
 
 const FooterNav = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <div className="mx-auto w-full">
       <div className=" flex items-center border-t border-input bg-primary-dark pb-8 pt-4 text-sm text-primary-dark-foreground">

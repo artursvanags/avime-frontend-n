@@ -8,13 +8,17 @@ import {
   Lock,
   MenuIcon,
   Store,
+  Award,
+  Rocket,
+  Wallet
 } from "lucide-react";
 
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
-const DefaultLogo = () => {
+const DefaultLogo = (props:React.ComponentProps<'img'>) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   let logoSrc;
@@ -46,7 +50,7 @@ const DefaultLogo = () => {
         alt="Logo"
         width={100}
         height={100}
-        className="w-32 h-32"
+        className={cn('w-42 h-42', props.className)}
       />
     </>
   );
@@ -59,6 +63,12 @@ export const Icons = {
   Access: Lock,
   Store: Store,
   MyCart: ShoppingCart,
+};
+
+export const FeatureIcons = {
+  award: Award,
+  rocket: Rocket,
+  wallet: Wallet
 };
 
 export const ThemeIcons = {

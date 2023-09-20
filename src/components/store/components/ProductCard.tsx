@@ -3,7 +3,6 @@ import { Product as MedusaProduct } from "@/types/medusa";
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import Link from "next/link";
 import Grid from "@/components/global/grid";
-import { Badge } from "@/components/ui/badge";
 import { useAccount } from "@/lib/context/account-context";
 
 type CardProp = {
@@ -16,7 +15,7 @@ export function ProductCard({ products }: CardProp) {
     (p) =>
       !p.metadata || !p.metadata.is_package || p.metadata.is_package !== "true",
   );
-  const { loginView, customer, retrievingCustomer } = useAccount();
+  const { customer, retrievingCustomer } = useAccount();
   return (
     <>
       {filteredProducts.map((p) => (

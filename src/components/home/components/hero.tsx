@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="container grid grid-cols-12 items-stretch justify-start space-y-4">
-      <div className="mr-auto place-self-center lg:col-span-7 py-40">
+    <section className="container grid h-[80vh] grid-cols-12 items-stretch justify-start space-y-4">
+      <div className="mr-auto place-self-center lg:col-span-7">
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
           Elevating elegance, <br /> Capturing legacy.
         </h1>

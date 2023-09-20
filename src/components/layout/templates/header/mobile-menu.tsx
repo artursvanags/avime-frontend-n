@@ -28,9 +28,11 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
     <div className="flex border-b bg-background px-4 py-4">
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <Icons.HamburgerMenu className="h-12 w-12" />
-          </Button>
+          <div className="flex items-center">
+            <Button variant="ghost" size="icon">
+              <Icons.HamburgerMenu className="h-12 w-12" />
+            </Button>
+          </div>
         </SheetTrigger>
         <SheetContent className="flex w-[80vw] flex-col px-4 py-4" side="left">
           <p className="border-b pb-2 font-heading text-4xl lg:text-5xl">
@@ -58,9 +60,9 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
           </div>
         </SheetContent>
       </Sheet>
-      <div className="ml-auto flex items-center space-x-2">
-        <Link href="/" className="text-3xl font-bold">
-          {siteConfig.name}
+      <div className="ml-auto pr-4 flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2 overflow-visible">
+          <Icons.logo className="h-16 w-16" />
         </Link>
       </div>
     </div>
