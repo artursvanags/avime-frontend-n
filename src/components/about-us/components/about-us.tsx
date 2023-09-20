@@ -9,19 +9,19 @@ export default function AboutUs() {
       <div className="container grid grid-cols-2 gap-4">
         <div className="space-y-3">
           <p className="pb-6 font-medium leading-normal sm:text-xl sm:leading-8">
-            AVIME Photography Boutique Welcome to AVIME, where we're redefining
+            AVIME Photography Boutique Welcome to AVIME&lsquo; where we&apos;re redefining
             the art of school photography.
           </p>
           <p className="leading-normal sm:text-xl sm:leading-8">
-            Identifying the Gap In an ever-evolving world, school photography
+            Identifying the Gap In an ever-evolving world&lsquo; school photography
             had remained stagnant for over two decades. We saw a gap in the
-            market, a disconnection between what parents deserved and what they
+            market&lsquo; a disconnection between what parents deserved and what they
             were receiving.
           </p>
           <p className="leading-normal sm:text-xl sm:leading-8">
-            Despite paying a premium for their children's school photos, parents
+            Despite paying a premium for their children&apos;s school photos&lsquo; parents
             were often left with lackluster results—images that failed to
-            capture the true essence of their child's journey through education.
+            capture the true essence of their child&apos;s journey through education.
           </p>
         </div>
 
