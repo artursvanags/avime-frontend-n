@@ -1,18 +1,19 @@
-import PageHeader, {
+import AboutUs from "@/components/about-us/components/about-us";
+import {
+  PageHeaderTwo,
   PageHeaderProps,
 } from "@/components/layout/templates/page-header";
 import type { Metadata } from "next";
 
 const info: PageHeaderProps = {
-  title: "About Us",
-  description: "Get to know us better!",
+  title: "An ambitious team of talented individuals",
+  description: "Who we are?",
 };
 
 export const metadata: Metadata = {
   title: info.title,
   description: info.description,
 };
-
 
 const aboutUsText = `
   About Us - AVIME Photography Boutique Welcome to AVIME, where we're
@@ -66,12 +67,8 @@ const aboutUsText = `
 export default function AboutPage() {
   return (
     <>
-      <PageHeader title={info.title} description={info.description} />
-      <div className="container">
-        <p>
-          {aboutUsText}
-        </p>
-      </div>
+      <PageHeaderTwo title={info.title} description={info.description} />
+      <AboutUs />
     </>
   );
 }

@@ -33,7 +33,7 @@ export default function Features() {
     >
       <div className="container">
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          Elevating elegance, capturing legacy
+        Setting a New Standard in School Photography!
         </h2>
         <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
           We make it perfect in every photo

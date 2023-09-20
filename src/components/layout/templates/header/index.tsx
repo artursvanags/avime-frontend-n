@@ -1,6 +1,8 @@
+'use client'
 import Navigation from "./navigation-menu";
 import MobileNavigation from "./mobile-menu";
 import { NavigationConfig as nav } from "@/config/site";
+
 
 export default function SiteHeader() {
   return (

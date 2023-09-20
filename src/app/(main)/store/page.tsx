@@ -1,4 +1,5 @@
-import PageHeader, {
+import {
+  PageHeader,
   PageHeaderProps,
 } from "@/components/layout/templates/page-header";
 import ListProducts from "@/components/store/templates/ListProducts";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 export default function StorePage() {
   return (
     <>
-      <PageHeader title={info.title} description={info.description} />
+      <PageHeader title={info.title} description={info.description} className="lg:pt-30 lg:pb-7" />
       <ListProducts />
     </>
   );
