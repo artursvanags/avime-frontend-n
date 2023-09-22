@@ -18,6 +18,21 @@ export function ProductCard({ products, productMeta }: CardProp) {
     : products;
   const { customer, retrievingCustomer } = useAccount();
 
+  // Sort the filteredProducts array in ascending order based on the title
+  filteredProducts.sort((a, b) => {
+    const titleA = a.title ? a.title.toLowerCase() : "";
+    const titleB = b.title ? b.title.toLowerCase() : "";
+
+    if (titleA < titleB) {
+      return -1;
+    }
+    if (titleA > titleB) {
+      return 1;
+    }
+    return 0;
+  });
+
+
   return (
     <>
       {filteredProducts.map((p) => (
@@ -26,13 +41,16 @@ export function ProductCard({ products, productMeta }: CardProp) {
             href={`/products/${p.handle}`}
             className="relative inline-block h-full w-full p-2 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
           >
+            <div className="aspect-square">
               <Image
                 src={p?.thumbnail || "/default-image.jpg"}
                 width={512}
                 height={512}
-                className="object-cover aspect-square"
+                className="w-full h-full object-cover"
                 alt={p.title ?? "Product Title"}
               />
+            </div>
+
             <h3 className="pt-1 text-sm font-medium">{p.title}</h3>
             <div className="pt-1 text-sm text-muted-foreground">
               {!retrievingCustomer && customer ? (

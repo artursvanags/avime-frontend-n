@@ -38,7 +38,7 @@ export default function ListProducts() {
   return (
     <div className="py-14">
       {isLoading ? (
-        <Grid className="container grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <Grid className="container grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           <ProductCardSkeleton />
         </Grid>
       ) : (
@@ -58,7 +58,7 @@ export default function ListProducts() {
                 <h2 className="container pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
                   Prints
                 </h2>
-                <Grid className="container grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <Grid className="container grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
                   <ProductCard products={products} productMeta={"is_print"}  />
                 </Grid>
               </div>
@@ -66,7 +66,7 @@ export default function ListProducts() {
                 <h2 className="container pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
                   Products
                 </h2>
-                <Grid className="container grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                <Grid className="container grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
                   <ProductCard products={products} productMeta={"is_product"} />
                 </Grid>
               </div>

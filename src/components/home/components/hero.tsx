@@ -33,13 +33,15 @@ export default function Hero() {
         </div>
       </div>
       <div className="relative hidden overflow-hidden lg:col-span-5 lg:mt-0 lg:flex">
-        <Image
-          src="/aus_hero_image.png"
-          loading="lazy"
-          fill
-          className="scale-[1.4] object-contain"
-          alt="Image"
-        />
+        <div className="scale-[1.4]">
+          <Image
+            src="/aus_hero_image.png"
+            width={1024}
+            height={1024}
+            className="h-full w-full object-contain"
+            alt="Image"
+          />
+        </div>
       </div>
     </section>
   );
