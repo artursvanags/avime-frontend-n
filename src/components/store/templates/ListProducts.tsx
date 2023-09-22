@@ -59,7 +59,10 @@ export default function ListProducts() {
                 </Grid>
               </div>
               <div>
-                <div className="pb-4">Have you choosen your package? Now let's add some addons!</div>
+                <div className="pb-4">
+                  Have you chosen your package? Check out some extra options to
+                  make the most out of your photos.
+                </div>
                 <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
                   Prints
                 </h2>

@@ -46,6 +46,7 @@ export function ProductCard({ products, productMeta }: CardProp) {
                 src={p?.thumbnail || "/default-image.jpg"}
                 width={420}
                 height={420}
+                loading="lazy"
                 className="w-full h-full object-cover"
                 alt={p.title ?? "Product Title"}
               />

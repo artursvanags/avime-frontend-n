@@ -47,6 +47,7 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
                 src={p?.thumbnail || "/default-image.jpg"}
                 width={420}
                 height={420}
+                loading="lazy"
                 className="h-full w-full object-cover"
                 alt={p.title ?? "Product Title"}
               />
