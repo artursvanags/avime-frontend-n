@@ -10,7 +10,7 @@ export function PageHeader({ title, description, ...props }: PageHeaderProps) {
   return (
     <section
       className={cn(
-        "border-b py-8 dark:bg-transparent md:py-12 lg:py-24",
+        "py-8 dark:bg-transparent md:py-12 lg:py-24",
         props.className,
       )}
     >

@@ -3,7 +3,7 @@ import { useProducts } from "medusa-react";
 import { ProductCard } from "../components/ProductCard";
 import { ProductCardSkeleton } from "../components/ProductCardSkeleton";
 import Grid from "@/components/global/grid";
-import { ProductCardPackage } from "../components/ProductCardPackage";
+import { ProductCardHorizontal } from "../components/ProductCardHorizontal";
 
 const IS_SERVER = typeof window === "undefined";
 const CART_KEY = "medusa_cart_id";
@@ -34,6 +34,7 @@ export default function ListProducts() {
     cart_id: cart || undefined,
     currency_code: region?.countryCode,
   });
+  console.log(products);
 
   return (
     <div className="py-14">
@@ -45,28 +46,32 @@ export default function ListProducts() {
         <>
           {products && !products.length && <span>No Products</span>}
           {products && products.length > 0 ? (
-            <div className="space-y-12">
+            <div className=" container space-y-12">
               <div>
-                <h2 className="container pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
+                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
                   Packages
                 </h2>
-                <Grid className="container grid-cols-2 pb-5 sm:grid-cols-2 lg:grid-cols-4">
-                <ProductCard products={products} productMeta={"is_package"} />
+                <Grid className="grid-cols-1 pb-5 lg:grid-cols-2">
+                  <ProductCardHorizontal
+                    products={products}
+                    productMeta={"is_package"}
+                  />
                 </Grid>
               </div>
               <div>
-                <h2 className="container pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
+                <div className="pb-4">Have you choosen your package? Now let's add some addons!</div>
+                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
                   Prints
                 </h2>
-                <Grid className="container grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-                  <ProductCard products={products} productMeta={"is_print"}  />
+                <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+                  <ProductCard products={products} productMeta={"is_print"} />
                 </Grid>
               </div>
               <div>
-                <h2 className="container pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
+                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
                   Products
                 </h2>
-                <Grid className="container grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+                <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
                   <ProductCard products={products} productMeta={"is_product"} />
                 </Grid>
               </div>

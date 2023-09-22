@@ -10,7 +10,8 @@ import {
   Store,
   Award,
   Rocket,
-  Wallet
+  Wallet,
+  Layers
 } from "lucide-react";
 
 import Image from "next/image";
@@ -63,6 +64,7 @@ export const Icons = {
   Access: Lock,
   Store: Store,
   MyCart: ShoppingCart,
+  Layers: Layers
 };
 
 export const FeatureIcons = {

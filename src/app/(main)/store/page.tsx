@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function StorePage() {
   return (
     <>
-      <PageHeader title={info.title} description={info.description} className="lg:pt-30 lg:pb-14" />
+      <PageHeader title={info.title} description={info.description} className="lg:pt-10 lg:pb-14 border-b" />
       <ListProducts />
     </>
   );
