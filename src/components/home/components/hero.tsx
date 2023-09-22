@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="container flex flex-col gap-4 pt-4 pb-14 lg:grid lg:grid-cols-12 lg:py-32">
-      <div className="order-2 lg:order-1 lg:col-span-8 lg:place-self-center">
+    <section className="container flex flex-col gap-4 pb-14 pt-4 lg:grid lg:grid-cols-12 lg:py-32">
+      <div className="order-2 mr-auto place-self-center lg:order-1 lg:col-span-7">
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
           Elevating elegance, <br /> Capturing legacy.
         </h1>
@@ -38,13 +38,13 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="order-1 lg:order-2 lg:col-span-4">
-        <div className="relative aspect-square overflow-hidden">
+      <div className="order-1 lg:order-2 lg:col-span-5">
+        <div className="relative aspect-square lg:pb-12 overflow-hidden">
           <Image
             src="/aus_hero_image.png"
             width={1024}
             height={1024}
-            className="h-full w-full object-contain scale-[1.4] "
+            className="h-full w-full scale-[1.4] object-contain "
             alt="Image"
           />
         </div>
