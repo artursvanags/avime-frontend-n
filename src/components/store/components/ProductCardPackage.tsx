@@ -4,6 +4,7 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import Link from "next/link";
 import Grid from "@/components/global/grid";
 import { useAccount } from "@/lib/context/account-context";
+import { findCheapestVariantPrice as price } from "@/lib/util/get-price";
 
 type CardProp = {
   products: (MedusaProduct | PricedProduct)[];
@@ -34,7 +35,7 @@ export function ProductCardPackage({ products }: CardProp) {
             <h3 className="pt-1 text-sm font-medium">{p.title}</h3>
             <div className="pt-1 text-sm text-muted-foreground">
               {!retrievingCustomer && customer ? (
-                <div>A$ ABC</div>
+                <div>A$ {price(p)}</div>
               ) : (
                 <div>A$ Please Login to view Pricing</div>
               )}

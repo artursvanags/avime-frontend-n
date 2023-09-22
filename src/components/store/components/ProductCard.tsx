@@ -4,18 +4,20 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import Link from "next/link";
 import Grid from "@/components/global/grid";
 import { useAccount } from "@/lib/context/account-context";
+import { findCheapestVariantPrice as price } from "@/lib/util/get-price";
 
 type CardProp = {
   products: (MedusaProduct | PricedProduct)[];
+  productMeta?: string;
 };
 
-export function ProductCard({ products }: CardProp) {
+export function ProductCard({ products, productMeta }: CardProp) {
   // Filter out products with metadata key "is_package" set to true
-  const filteredProducts = products.filter(
-    (p) =>
-      !p.metadata || !p.metadata.is_package || p.metadata.is_package !== "true",
-  );
+  const filteredProducts = productMeta
+    ? products.filter((p) => p.metadata && p.metadata[productMeta] === "true")
+    : products;
   const { customer, retrievingCustomer } = useAccount();
+
   return (
     <>
       {filteredProducts.map((p) => (
@@ -24,18 +26,17 @@ export function ProductCard({ products }: CardProp) {
             href={`/products/${p.handle}`}
             className="relative inline-block h-full w-full p-2 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
           >
-            <div className="relative aspect-square">
               <Image
                 src={p?.thumbnail || "/default-image.jpg"}
-                fill
-                className="object-cover"
+                width={512}
+                height={512}
+                className="object-cover aspect-square"
                 alt={p.title ?? "Product Title"}
               />
-            </div>
             <h3 className="pt-1 text-sm font-medium">{p.title}</h3>
             <div className="pt-1 text-sm text-muted-foreground">
               {!retrievingCustomer && customer ? (
-                <div>A$ ABC</div>
+                <div>A$ {price(p)}</div>
               ) : (
                 <div>A$ Please Login to view Pricing</div>
               )}

@@ -1,13 +1,39 @@
 "use client";
-
 import { useProducts } from "medusa-react";
 import { ProductCard } from "../components/ProductCard";
 import { ProductCardSkeleton } from "../components/ProductCardSkeleton";
 import Grid from "@/components/global/grid";
 import { ProductCardPackage } from "../components/ProductCardPackage";
 
+const IS_SERVER = typeof window === "undefined";
+const CART_KEY = "medusa_cart_id";
+const REGION_KEY = "medusa_region";
+
+const getRegion = () => {
+  if (!IS_SERVER) {
+    const region = localStorage.getItem(REGION_KEY);
+    if (region) {
+      return JSON.parse(region) as { regionId: string; countryCode: string };
+    }
+  }
+  return null;
+};
+
+const getCart = () => {
+  if (!IS_SERVER) {
+    return localStorage.getItem(CART_KEY);
+  }
+  return null;
+};
+
 export default function ListProducts() {
-  const { products, isLoading } = useProducts();
+  const region = getRegion();
+  const cart = getCart();
+  const { products, isLoading } = useProducts({
+    region_id: region?.regionId,
+    cart_id: cart || undefined,
+    currency_code: region?.countryCode,
+  });
 
   return (
     <div className="py-14">
@@ -25,7 +51,7 @@ export default function ListProducts() {
                   Packages
                 </h2>
                 <Grid className="container grid-cols-2 pb-5 sm:grid-cols-2 lg:grid-cols-4">
-                  <ProductCardPackage products={products} />
+                <ProductCard products={products} productMeta={"is_package"} />
                 </Grid>
               </div>
               <div>
@@ -33,7 +59,15 @@ export default function ListProducts() {
                   Prints
                 </h2>
                 <Grid className="container grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                  <ProductCard products={products} />
+                  <ProductCard products={products} productMeta={"is_print"}  />
+                </Grid>
+              </div>
+              <div>
+                <h2 className="container pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
+                  Products
+                </h2>
+                <Grid className="container grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                  <ProductCard products={products} productMeta={"is_product"} />
                 </Grid>
               </div>
             </div>
