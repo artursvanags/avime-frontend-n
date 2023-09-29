@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Icons, MyAccount } from "@/config/icons";
@@ -13,78 +13,47 @@ import {
   DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu";
 
+const menuItems = [
+  {
+    icon: <Icons.User className="mr-3 h-4 w-4" />,
+    text: "View Profile",
+    link: "/account",
+    shortcut: "⇧⌘P",
+  },
+  {
+    icon: <MyAccount.Billing className="mr-3 h-4 w-4" />,
+    text: "Billing",
+    link: "/account/addresses",
+    shortcut: "⌘B",
+  },
+  {
+    icon: <MyAccount.Orders className="mr-3 h-4 w-4" />,
+    text: "Orders",
+    link: "/account/orders",
+    shortcut: "⌘O",
+  },
+];
+
+import { useRouter } from "next/navigation";
+
 export const AccountButton = () => {
+  const router = useRouter();
   const { customer, retrievingCustomer, checkSession, handleLogout } =
     useAccount();
+
+  const handleItemClick = (link: string) => {
+    router.push(link);
+  };
 
   useEffect(() => {
     checkSession();
   }, [checkSession]);
 
-  const dropdownContent = useMemo(() => {
-    if (!retrievingCustomer && customer) {
-      return (
-        <>
-          <DropdownMenuLabel className="flex flex-1 items-center align-middle">
-            <span>My Account</span>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link
-              href="/account"
-              className="flex flex-1 items-center align-middle"
-            >
-              <Icons.User className="mr-3 h-4 w-4" /> View Profile
-            </Link>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link
-              href="/account/addresses"
-              className="flex flex-1 items-center align-middle"
-            >
-              <MyAccount.Billing className="mr-3 h-4 w-4" />
-              Billing
-            </Link>
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link
-              href="/account/orders"
-              className="flex flex-1 items-center align-middle"
-            >
-              <MyAccount.Orders className="mr-3 h-4 w-4" />
-              Orders
-            </Link>
-            <DropdownMenuShortcut>⌘O</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={handleLogout}
-            className="font-bold text-red-500 cursor-pointer"
-          >
-            <MyAccount.Logout className="mr-3 h-4 w-4" />
-            Log-out
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </>
-      );
-    }
-    return (
-      <>
-        <Button asChild variant="outline">
-          <Link href="/account">
-            <MyAccount.Login className="mr-2 h-4 w-4" />
-            Sign in
-          </Link>
-        </Button>
-      </>
-    );
-  }, [retrievingCustomer, customer, handleLogout]);
+  const isLoggedIn = !retrievingCustomer && customer;
 
   return (
     <>
-      {!retrievingCustomer && customer ? (
+      {isLoggedIn ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Button variant="ghost" size="icon">
@@ -92,11 +61,44 @@ export const AccountButton = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="right-0 w-48">
-            {dropdownContent}
+            <DropdownMenuLabel className="flex flex-1 items-center align-middle">
+              <span>My Account</span>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <div>
+              {menuItems.map((item, index) => (
+                <DropdownMenuItem
+                  key={index}
+                  onClick={() => handleItemClick(item.link)}
+                  className="cursor-pointer "
+                >
+                  {item.icon}
+                  {item.text}
+
+                  <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              ))}
+            </div>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={handleLogout}
+              className="cursor-pointer font-bold text-red-500"
+            >
+              <MyAccount.Logout className="mr-3 h-4 w-4" />
+              Log-out
+              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <>{dropdownContent}</>
+        <>
+          <Button asChild variant="outline">
+            <Link href="/account">
+              <MyAccount.Login className="mr-2 h-4 w-4" />
+              Sign in
+            </Link>
+          </Button>
+        </>
       )}
     </>
   );
