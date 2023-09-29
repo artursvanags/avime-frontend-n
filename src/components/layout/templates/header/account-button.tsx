@@ -38,16 +38,12 @@ import { useRouter } from "next/navigation";
 
 export const AccountButton = () => {
   const router = useRouter();
-  const { customer, retrievingCustomer, checkSession, handleLogout } =
+  const { customer, retrievingCustomer, handleLogout } =
     useAccount();
 
   const handleItemClick = (link: string) => {
     router.push(link);
   };
-
-  useEffect(() => {
-    checkSession();
-  }, [checkSession]);
 
   const isLoggedIn = !retrievingCustomer && customer;
 
