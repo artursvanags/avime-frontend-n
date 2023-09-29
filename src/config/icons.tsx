@@ -12,13 +12,19 @@ import {
   Rocket,
   Wallet,
   Loader2,
-  Layers
+  Layers,
+  LogInIcon,
+  LogOutIcon,
+  School,
+  Package,
+  CreditCard
 } from "lucide-react";
 
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+
 
 const DefaultLogo = (props:React.ComponentProps<'img'>) => {
   const { resolvedTheme } = useTheme();
@@ -80,4 +86,11 @@ export const ThemeIcons = {
   System: Laptop,
 };
 
+export const MyAccount = {
+  Account: School,
+  Billing: CreditCard,
+  Orders: Package,
+  Login: LogInIcon,
+  Logout: LogOutIcon
+};
 export const Spinner = Loader2;

@@ -8,7 +8,7 @@ import AccountNav from "../components/account-nav"
 
 const AccountLayout: React.FC = ({ children }) => {
   const { customer, retrievingCustomer, checkSession } = useAccount()
-
+  const { handleLogout } = useAccount()
   useEffect(() => {
     checkSession()
   }, [checkSession])

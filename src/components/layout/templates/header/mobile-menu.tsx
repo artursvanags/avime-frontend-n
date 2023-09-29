@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CheckActive, cn } from "@/lib/utils";
 import { Icons } from "@/config/icons";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
+
 import {
   Sheet,
   SheetContent,

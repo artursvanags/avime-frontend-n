@@ -5,6 +5,7 @@ import { CheckActive } from "@/lib/utils";
 import { Icons } from "@/config/icons";
 import { NavItem } from "@/types";
 import { CartButton } from "./cart-button";
+import { AccountButton } from "./account-button";
 
 export default function Navigation({ menu }: { menu: NavItem[] }) {
 
@@ -40,11 +41,7 @@ export default function Navigation({ menu }: { menu: NavItem[] }) {
           <Icons.Access className="mr-2 h-4 w-4" />
           Access Photos
         </Button>
-        <Button asChild variant="ghost" size="icon">
-          <Link href="/account">
-            <Icons.User className="h-4 w-4" />
-          </Link>
-        </Button>
+        <AccountButton/>
         <CartButton/>
       </div>
     </div>
