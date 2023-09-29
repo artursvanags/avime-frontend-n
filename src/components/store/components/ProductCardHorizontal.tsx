@@ -62,7 +62,9 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
                   <div>A$ Please Login to view Pricing</div>
                 )}
               </div>
-              <div className="pt-3 text-justify text-sm">{p.description}</div>
+              <div className="whitespace-pre-line pt-3 text-justify text-sm">
+                {p.description}
+              </div>
             </div>
           </Link>
         </Grid.Item>
