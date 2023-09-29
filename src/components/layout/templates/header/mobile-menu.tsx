@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/sheet";
 import ModeToggle from "@/components/global/ThemeToggleButton";
 import { NavItem } from "@/types";
+import { CartButton } from "./cart-button";
+import { AccountButton } from "./account-button";
 
 export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
   const sheetCloseRef = useRef<HTMLButtonElement | null>(null);
@@ -23,7 +25,48 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
       sheetCloseRef.current.click();
     }
   };
+  const Content = () => {
+    return (
+      <>
+        <div className="flex">
+          <AccountButton name="My Account" mobile />
+          <CartButton className="ml-auto" />
+        </div>
 
+        <p className="border-b pb-2 font-heading text-4xl lg:text-5xl">
+          Main Menu
+        </p>
+
+        <div className="flex space-x-2">
+          <Button asChild variant="outline">
+            <Link href="/store">
+              <Icons.Store className="mr-2 h-4 w-4" />
+              Store
+            </Link>
+          </Button>
+          <Button variant="outline">
+            <Icons.Access className="mr-2 h-4 w-4" />
+            Access Photos
+          </Button>
+        </div>
+
+        <nav className=" space-y-2">
+          {menu.map((l, index) => (
+            <Button
+              asChild
+              key={index}
+              size="lg"
+              className={cn("w-full justify-start")}
+              variant={CheckActive({ href: l.href }) ? "secondary" : "ghost"}
+              onClick={handleSheetClose}
+            >
+              <Link href={l.href}>{l.title}</Link>
+            </Button>
+          ))}
+        </nav>
+      </>
+    );
+  };
   return (
     <div className="flex border-b bg-background px-4 py-4">
       <Sheet>
@@ -35,23 +78,7 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
           </div>
         </SheetTrigger>
         <SheetContent className="flex w-[80vw] flex-col px-4 py-4" side="left">
-          <p className="border-b pb-2 font-heading text-4xl lg:text-5xl">
-            Main Menu
-          </p>
-          <nav className=" space-y-2">
-            {menu.map((l, index) => (
-              <Button
-                asChild
-                key={index}
-                size="lg"
-                className={cn("w-full justify-start")}
-                variant={CheckActive({ href: l.href }) ? "secondary" : "ghost"}
-                onClick={handleSheetClose}
-              >
-                <Link href={l.href}>{l.title}</Link>
-              </Button>
-            ))}
-          </nav>
+          <Content />
           <SheetClose ref={sheetCloseRef} />
           <div className="mt-auto border-t pt-4">
             <div className="flex flex-1 items-center justify-between">
@@ -60,7 +87,7 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
           </div>
         </SheetContent>
       </Sheet>
-      <div className="ml-auto pr-4 flex items-center space-x-2">
+      <div className="ml-auto flex items-center space-x-2 pr-4">
         <Link href="/" className="flex items-center space-x-2 overflow-visible">
           <Icons.logo className="h-16 w-16" />
         </Link>

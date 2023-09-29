@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,6 @@ import { CartButton } from "./cart-button";
 import { AccountButton } from "./account-button";
 
 export default function Navigation({ menu }: { menu: NavItem[] }) {
-
   return (
     <div className="flex h-32 w-full items-center justify-center">
       <nav className="mr-auto flex flex-1 space-x-3 text-sm font-medium">
@@ -41,8 +41,8 @@ export default function Navigation({ menu }: { menu: NavItem[] }) {
           <Icons.Access className="mr-2 h-4 w-4" />
           Access Photos
         </Button>
-        <AccountButton/>
-        <CartButton/>
+        <AccountButton />
+        <CartButton />
       </div>
     </div>
   );

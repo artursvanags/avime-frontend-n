@@ -1,3 +1,4 @@
+"use client";
 import {
   ChevronsUpDown,
   Sun,
@@ -17,7 +18,7 @@ import {
   LogOutIcon,
   School,
   Package,
-  CreditCard
+  CreditCard,
 } from "lucide-react";
 
 import Image from "next/image";
@@ -25,8 +26,7 @@ import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
-
-const DefaultLogo = (props:React.ComponentProps<'img'>) => {
+const DefaultLogo = (props: React.ComponentProps<"img">) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   let logoSrc;
@@ -58,7 +58,7 @@ const DefaultLogo = (props:React.ComponentProps<'img'>) => {
         alt="Logo"
         width={100}
         height={100}
-        className={cn('w-42 h-42', props.className)}
+        className={cn("w-42 h-42", props.className)}
       />
     </>
   );
@@ -71,13 +71,13 @@ export const Icons = {
   Access: Lock,
   Store: Store,
   MyCart: ShoppingCart,
-  Layers: Layers
+  Layers: Layers,
 };
 
 export const FeatureIcons = {
   award: Award,
   rocket: Rocket,
-  wallet: Wallet
+  wallet: Wallet,
 };
 
 export const ThemeIcons = {
@@ -91,6 +91,6 @@ export const MyAccount = {
   Billing: CreditCard,
   Orders: Package,
   Login: LogInIcon,
-  Logout: LogOutIcon
+  Logout: LogOutIcon,
 };
 export const Spinner = Loader2;

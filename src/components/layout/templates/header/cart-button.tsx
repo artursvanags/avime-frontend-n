@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import Link from "next/link";
 
@@ -8,8 +9,9 @@ import { Icons } from "@/config/icons";
 import { useAccount } from "@/lib/context/account-context";
 import { useCart } from "medusa-react";
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
-export const CartButton = () => {
+export const CartButton = (props: React.ComponentProps<'div'>) => {
   const { customer, retrievingCustomer } = useAccount();
   const { totalItems } = useCart();
   const [initialTotalItems, setInitialTotalItems] = useState(totalItems);
@@ -32,7 +34,7 @@ export const CartButton = () => {
   }, [totalItems, initialTotalItems]);
 
   return (
-    <>
+    <div className={cn(props.className)}>
       {!retrievingCustomer && customer && (
         <Button asChild className="relative" variant="ghost" size="icon">
           <Link href="/cart">
@@ -47,6 +49,6 @@ export const CartButton = () => {
           </Link>
         </Button>
       )}
-    </>
+    </div>
   );
 };

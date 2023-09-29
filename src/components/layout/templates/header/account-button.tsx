@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Icons, MyAccount } from "@/config/icons";
@@ -36,27 +36,28 @@ const menuItems = [
 
 import { useRouter } from "next/navigation";
 
-export const AccountButton = () => {
+export const AccountButton = ({ ...props }) => {
   const router = useRouter();
-  const { customer, retrievingCustomer, handleLogout } =
-    useAccount();
 
+  const { customer, retrievingCustomer, handleLogout } = useAccount();
+  const isLoggedIn = !retrievingCustomer && customer;
+  const hasName = props.name !== undefined;
+  const isMobile = props.mobile === true;
   const handleItemClick = (link: string) => {
     router.push(link);
   };
 
-  const isLoggedIn = !retrievingCustomer && customer;
-
   return (
-    <>
+    <div className={props.className}>
       {isLoggedIn ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Button variant="ghost" size="icon">
-              <Icons.User className="h-4 w-4" />
+            <Button variant={hasName ? "outline" : "ghost"} size={hasName ? "default" : "icon"}>
+              <Icons.User className={`h-4 w-4${hasName ? " mr-2" : ""}`} />
+              {props.name}
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="right-0 w-48">
+          <DropdownMenuContent align={isMobile ? "start" : "end"} className="w-48">
             <DropdownMenuLabel className="flex flex-1 items-center align-middle">
               <span>My Account</span>
             </DropdownMenuLabel>
@@ -96,6 +97,6 @@ export const AccountButton = () => {
           </Button>
         </>
       )}
-    </>
+    </div>
   );
 };
