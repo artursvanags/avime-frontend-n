@@ -36,9 +36,14 @@ const menuItems = [
 
 import { useRouter } from "next/navigation";
 
+interface AccountButtonProps extends React.ComponentProps<"div"> {
+  name?: string;
+  className?: string;
+  mobile?: boolean;
+  onClick?: () => void;
+}
 
-
-export const AccountButton = ({ ...props }) => {
+export const AccountButton: React.FC<AccountButtonProps> = ({ ...props }) => {
   const router = useRouter();
 
   const { customer, retrievingCustomer, handleLogout } = useAccount();
@@ -50,7 +55,7 @@ export const AccountButton = ({ ...props }) => {
   };
 
   return (
-    <div className={props.className}>
+    <div className={props.className} {...props}>
       {isLoggedIn ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
@@ -76,7 +81,7 @@ export const AccountButton = ({ ...props }) => {
                   key={index}
                   onClick={() => {
                     handleItemClick(item.link);
-                    props.onClick();
+                    props.onClick?.();
                   }}
                   className="cursor-pointer"
                 >
@@ -91,7 +96,7 @@ export const AccountButton = ({ ...props }) => {
             <DropdownMenuItem
               onClick={() => {
                 handleLogout;
-                props.onClick();
+                props.onClick?.();
               }}
               className="cursor-pointer font-bold text-red-500"
             >

@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 
 interface CustomDivProps extends React.ComponentProps<"div"> {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const CartButton:React.FC<CustomDivProps> = (props) => {
