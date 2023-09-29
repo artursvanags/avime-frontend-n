@@ -1,15 +1,12 @@
-"use client";
 import * as React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { CheckActive } from "@/lib/utils";
 import { Icons } from "@/config/icons";
 import { NavItem } from "@/types";
-import { useAccount } from "@/lib/context/account-context";
+import { CartButton } from "./cart-button";
 
 export default function Navigation({ menu }: { menu: NavItem[] }) {
-  const { loginView, customer, retrievingCustomer } = useAccount();
 
   return (
     <div className="flex h-32 w-full items-center justify-center">
@@ -48,13 +45,7 @@ export default function Navigation({ menu }: { menu: NavItem[] }) {
             <Icons.User className="h-4 w-4" />
           </Link>
         </Button>
-        {!retrievingCustomer && customer && (
-          <Button asChild variant="ghost" size="icon">
-            <Link href="/cart">
-              <Icons.MyCart className="h-4 w-4" />
-            </Link>
-          </Button>
-        )}
+        <CartButton/>
       </div>
     </div>
   );
