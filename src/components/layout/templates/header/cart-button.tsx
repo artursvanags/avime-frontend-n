@@ -11,7 +11,12 @@ import { useCart } from "medusa-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-export const CartButton = (props: React.ComponentProps<'div'>) => {
+
+interface CustomDivProps extends React.ComponentProps<"div"> {
+  onClick: () => void;
+}
+
+export const CartButton:React.FC<CustomDivProps> = (props) => {
   const { customer, retrievingCustomer } = useAccount();
   const { totalItems } = useCart();
   const [initialTotalItems, setInitialTotalItems] = useState(totalItems);
@@ -36,7 +41,12 @@ export const CartButton = (props: React.ComponentProps<'div'>) => {
   return (
     <div className={cn(props.className)}>
       {!retrievingCustomer && customer && (
-        <Button asChild className="relative" variant="ghost" size="icon">
+        <Button
+          className="relative"
+          onClick={props.onClick}
+          variant="ghost"
+          size="icon"
+        >
           <Link href="/cart">
             <Icons.MyCart className="h-4 w-4" />
             {totalItems > 0 && (

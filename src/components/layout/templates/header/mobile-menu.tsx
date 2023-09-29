@@ -29,8 +29,8 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
     return (
       <>
         <div className="flex">
-          <AccountButton name="My Account" mobile />
-          <CartButton className="ml-auto" />
+          <AccountButton name="My Account" mobile onClick={handleSheetClose} />
+          <CartButton className="ml-auto" onClick={handleSheetClose} />
         </div>
 
         <p className="border-b pb-2 font-heading text-4xl lg:text-5xl">
@@ -39,7 +39,7 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
 
         <div className="flex space-x-2">
           <Button asChild variant="outline">
-            <Link href="/store">
+            <Link href="/store" onClick={handleSheetClose}>
               <Icons.Store className="mr-2 h-4 w-4" />
               Store
             </Link>

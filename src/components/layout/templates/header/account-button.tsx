@@ -36,6 +36,8 @@ const menuItems = [
 
 import { useRouter } from "next/navigation";
 
+
+
 export const AccountButton = ({ ...props }) => {
   const router = useRouter();
 
@@ -52,12 +54,18 @@ export const AccountButton = ({ ...props }) => {
       {isLoggedIn ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Button variant={hasName ? "outline" : "ghost"} size={hasName ? "default" : "icon"}>
+            <Button
+              variant={hasName ? "outline" : "ghost"}
+              size={hasName ? "default" : "icon"}
+            >
               <Icons.User className={`h-4 w-4${hasName ? " mr-2" : ""}`} />
               {props.name}
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align={isMobile ? "start" : "end"} className="w-48">
+          <DropdownMenuContent
+            align={isMobile ? "start" : "end"}
+            className="w-48"
+          >
             <DropdownMenuLabel className="flex flex-1 items-center align-middle">
               <span>My Account</span>
             </DropdownMenuLabel>
@@ -66,8 +74,11 @@ export const AccountButton = ({ ...props }) => {
               {menuItems.map((item, index) => (
                 <DropdownMenuItem
                   key={index}
-                  onClick={() => handleItemClick(item.link)}
-                  className="cursor-pointer "
+                  onClick={() => {
+                    handleItemClick(item.link);
+                    props.onClick();
+                  }}
+                  className="cursor-pointer"
                 >
                   {item.icon}
                   {item.text}
@@ -78,7 +89,10 @@ export const AccountButton = ({ ...props }) => {
             </div>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={handleLogout}
+              onClick={() => {
+                handleLogout;
+                props.onClick();
+              }}
               className="cursor-pointer font-bold text-red-500"
             >
               <MyAccount.Logout className="mr-3 h-4 w-4" />
@@ -90,7 +104,7 @@ export const AccountButton = ({ ...props }) => {
       ) : (
         <>
           <Button asChild variant="outline">
-            <Link href="/account">
+            <Link href="/account" onClick={props.onClick}>
               <MyAccount.Login className="mr-2 h-4 w-4" />
               Sign in
             </Link>
