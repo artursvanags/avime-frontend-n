@@ -11,6 +11,7 @@ import {
   Award,
   Rocket,
   Wallet,
+  Loader2,
   Layers
 } from "lucide-react";
 
@@ -78,3 +79,5 @@ export const ThemeIcons = {
   Moon: Moon,
   System: Laptop,
 };
+
+export const Spinner = Loader2;
