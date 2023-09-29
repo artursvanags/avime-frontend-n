@@ -1,34 +1,22 @@
-import medusaRequest from "@/lib/medusa-fetch"
-import ProductTemplate from "@/components/products/templates"
-import { Metadata } from "next"
-import { notFound } from "next/navigation"
+"use client";
+import { getProductByHandle } from "@/lib/data";
+import ProductTemplate from "@/components/products/templates";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { useProducts } from "medusa-react";
 
 type Props = {
-  params: { handle: string }
-}
-
-async function getProducts(handle: string) {
-  const res = await medusaRequest("GET", "/products", {
-    query: {
-      handle,
-    },
-  })
-
-  if (!res.ok) {
-    notFound()
-  }
-
-  return res.body
-}
+  params: { handle: string };
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { products } = await getProducts(params.handle)
+  const data = await getProductByHandle(params.handle);
 
-  if (!products.length) {
-    notFound()
+  const product = data.products[0];
+
+  if (!product) {
+    notFound();
   }
-
-  const product = products[0]
 
   return {
     title: `${product.title} | Acme Store`,
@@ -38,11 +26,54 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `${product.title}`,
       images: product.thumbnail ? [product.thumbnail] : [],
     },
-  }
+  };
 }
 
-export default async function CollectionPage({ params }: Props) {
-  const { products } = await getProducts(params.handle)
+const IS_SERVER = typeof window === "undefined";
+const CART_KEY = "medusa_cart_id";
+const REGION_KEY = "medusa_region";
 
-  return <ProductTemplate product={products[0]} />
+const getRegion = () => {
+  if (!IS_SERVER) {
+    const region = localStorage.getItem(REGION_KEY);
+    if (region) {
+      return JSON.parse(region) as { regionId: string; countryCode: string };
+    }
+  }
+  return null;
+};
+
+const getCart = () => {
+  if (!IS_SERVER) {
+    return localStorage.getItem(CART_KEY);
+  }
+  return null;
+};
+
+export default async function CollectionPage({ params }: Props) {
+  const region = getRegion();
+  const cart = getCart();
+  const { products, isLoading } = useProducts({
+    handle: params.handle,
+    region_id: region?.regionId,
+    cart_id: cart || undefined,
+    currency_code: region?.countryCode,
+  });
+
+  return (
+    <>
+      {products ? (
+        products.length > 0 ? (
+          // Render your product information here, such as the first product's title
+          <ProductTemplate product={products[0]} />
+        ) : (
+          // Handle the case when there are no products
+          <div>No products available</div>
+        )
+      ) : (
+        // Handle the loading state, e.g., show a loading spinner
+        <div>Loading...</div>
+      )}
+    </>
+  );
 }
