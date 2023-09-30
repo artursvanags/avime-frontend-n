@@ -19,6 +19,8 @@ import {
   School,
   Package,
   CreditCard,
+  Plus,
+  Minus
 } from "lucide-react";
 
 import Image from "next/image";
@@ -92,5 +94,11 @@ export const MyAccount = {
   Orders: Package,
   Login: LogInIcon,
   Logout: LogOutIcon,
+};
+
+export const DropdownQuantityIcons = {
+  Plus: Plus,
+  Minus: Minus,
+
 };
 export const Spinner = Loader2;

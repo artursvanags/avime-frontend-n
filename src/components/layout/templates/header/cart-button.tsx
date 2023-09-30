@@ -33,7 +33,6 @@ export const CartButton: React.FC<CartButtonProps> = ({
 
   const handleItemClick = (link: string) => {
     router.push(link);
-  
   };
 
     // Create state to manage the open/closed state of the dropdown
