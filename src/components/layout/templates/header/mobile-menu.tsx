@@ -30,7 +30,7 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
       <>
         <div className="flex">
           <AccountButton name="My Account" mobile onClick={handleSheetClose} />
-          <CartButton className="ml-auto" onClick={handleSheetClose} />
+          <CartButton className="ml-auto" mobile onClick={handleSheetClose} />
         </div>
 
         <p className="border-b pb-2 font-heading text-4xl lg:text-5xl">

@@ -20,6 +20,14 @@ const LineItemPrice = ({
   const hasReducedPrice = (item.total || 0) < originalPrice
 
   return (
+    <>
+    {formatAmount({
+          amount: item.total || 0,
+          region: region,
+          includeTaxes: false,
+        })}
+    </>
+    /* 
     <div className="flex flex-col text-gray-700 text-right">
       <span
         className={clsx("text-base-regular", {
@@ -32,6 +40,7 @@ const LineItemPrice = ({
           includeTaxes: false,
         })}
       </span>
+      
       {hasReducedPrice && (
         <>
           <p>
@@ -52,8 +61,9 @@ const LineItemPrice = ({
             </span>
           )}
         </>
-      )}
+      )} 
     </div>
+    */
   )
 }
 
