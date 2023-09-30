@@ -43,19 +43,24 @@ interface AccountButtonProps extends React.ComponentProps<"div"> {
   onClick?: () => void;
 }
 
-export const AccountButton: React.FC<AccountButtonProps> = ({ ...props }) => {
+export const AccountButton: React.FC<AccountButtonProps> = ({
+  name,
+  className,
+  mobile,
+  onClick,
+}) => {
   const router = useRouter();
-
   const { customer, retrievingCustomer, handleLogout } = useAccount();
   const isLoggedIn = !retrievingCustomer && customer;
-  const hasName = props.name !== undefined;
-  const isMobile = props.mobile === true;
+  const hasName = name !== undefined;
+  const isMobile = mobile === true;
+
   const handleItemClick = (link: string) => {
     router.push(link);
   };
 
   return (
-    <div className={props.className} {...props}>
+    <div className={className}>
       {isLoggedIn ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
@@ -64,7 +69,7 @@ export const AccountButton: React.FC<AccountButtonProps> = ({ ...props }) => {
               size={hasName ? "default" : "icon"}
             >
               <Icons.User className={`h-4 w-4${hasName ? " mr-2" : ""}`} />
-              {props.name}
+              {name}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -81,7 +86,7 @@ export const AccountButton: React.FC<AccountButtonProps> = ({ ...props }) => {
                   key={index}
                   onClick={() => {
                     handleItemClick(item.link);
-                    props.onClick?.();
+                    onClick?.();
                   }}
                   className="cursor-pointer"
                 >
@@ -95,8 +100,8 @@ export const AccountButton: React.FC<AccountButtonProps> = ({ ...props }) => {
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
-                handleLogout;
-                props.onClick?.();
+                handleLogout();
+                onClick?.();
               }}
               className="cursor-pointer font-bold text-red-500"
             >
@@ -109,7 +114,7 @@ export const AccountButton: React.FC<AccountButtonProps> = ({ ...props }) => {
       ) : (
         <>
           <Button asChild variant="outline">
-            <Link href="/account" onClick={props.onClick}>
+            <Link href="/account" onClick={onClick}>
               <MyAccount.Login className="mr-2 h-4 w-4" />
               Sign in
             </Link>

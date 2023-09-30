@@ -1,62 +1,44 @@
-"use client";
 import * as React from "react";
-import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
-
 import { Icons } from "@/config/icons";
-
 import { useAccount } from "@/lib/context/account-context";
 import { useCart } from "medusa-react";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
-
-interface CustomDivProps extends React.ComponentProps<"div"> {
+interface CartButtonProps extends React.ComponentProps<"div"> {
   onClick?: () => void;
 }
 
-export const CartButton:React.FC<CustomDivProps> = (props) => {
+export const CartButton: React.FC<CartButtonProps> = ({ className, onClick }) => {
+  const router = useRouter();
   const { customer, retrievingCustomer } = useAccount();
   const { totalItems } = useCart();
-  const [initialTotalItems, setInitialTotalItems] = useState(totalItems);
-  const [shouldPulse, setShouldPulse] = useState(false);
 
-  // Set the initialTotalItems when the component mounts
-  useEffect(() => {
-    setInitialTotalItems(totalItems);
-  }, []);
-
-  // Add animate-pulse class when totalItems changes from initial value
-  useEffect(() => {
-    if (totalItems !== initialTotalItems) {
-      // Reset the animation by toggling a CSS class
-      setShouldPulse(false);
-      setTimeout(() => {
-        setShouldPulse(true);
-      }, 0);
-    }
-  }, [totalItems, initialTotalItems]);
+  const handleItemClick = (link: string) => {
+    router.push(link);
+  };
 
   return (
-    <div className={cn(props.className)}>
+    <div className={cn(className)}>
       {!retrievingCustomer && customer && (
         <Button
           className="relative"
-          onClick={props.onClick}
+          onClick={() => {
+            handleItemClick("/cart");
+            onClick?.();
+          }}
           variant="ghost"
           size="icon"
         >
-          <Link href="/cart">
-            <Icons.MyCart className="h-4 w-4" />
-            {totalItems > 0 && (
-              <div className="absolute -right-1 -top-1 flex items-center justify-center">
-                <div className="relative flex h-4 w-4 items-center justify-center rounded-sm bg-foreground px-1 text-xs text-background">
-                  {totalItems}
-                </div>
+          <Icons.MyCart className="h-4 w-4" />
+          {totalItems > 0 && (
+            <div className="absolute -right-1 -top-1 flex items-center justify-center">
+              <div className="relative flex h-4 w-4 items-center justify-center rounded-sm bg-foreground px-1 text-xs text-background">
+                {totalItems}
               </div>
-            )}
-          </Link>
+            </div>
+          )}
         </Button>
       )}
     </div>
