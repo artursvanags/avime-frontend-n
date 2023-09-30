@@ -1,9 +1,7 @@
-"use client";
 import Hero from "@/components/home/components/hero";
 import Features from "@/components/home/components/features";
 import Features2 from "@/components/home/components/features2";
 import { Metadata } from "next";
-import { useRef } from "react";
 
 export const metadata: Metadata = {
   title: "Home",
