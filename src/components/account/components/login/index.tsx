@@ -52,7 +52,6 @@ const Login = () => {
           <div>
             <p className="pb-1 text-sm font-medium">E-Mail Address</p>
             <Input
-              className="h-12"
               disabled={isSubmitting}
               {...register("email", { required: "Email is required" })}
               autoComplete="email"
@@ -63,7 +62,6 @@ const Login = () => {
           <div>
             <p className="pb-1 text-sm font-medium">Password</p>
             <Input
-              className="h-12"
               disabled={isSubmitting}
               {...register("password", { required: "Password is required" })}
               autoComplete="current-password"
