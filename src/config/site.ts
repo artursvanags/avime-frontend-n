@@ -23,8 +23,8 @@ export const NavigationConfig: NavItem[] = [
     href: "/contacts",
   },
   {
-    title: "Store",
-    href: "/store",
+    title: "Access Photos",
+    href: "/access",
   },
 ];
 

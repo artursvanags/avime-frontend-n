@@ -31,10 +31,11 @@ export default function Navigation({ menu }: { menu: NavItem[] }) {
       </Link>
 
       <div className="ml-auto flex flex-1 justify-end space-x-2">
+        
         <Button asChild variant="outline">
-          <Link href="/access">
-            <Icons.Access className="mr-2 h-4 w-4" />
-            Access Photos
+          <Link href="/store">
+            <Icons.Store className="mr-2 h-4 w-4" />
+            Order Photos
           </Link>
         </Button>
         <AccountButton />
