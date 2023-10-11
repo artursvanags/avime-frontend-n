@@ -44,15 +44,15 @@ export function SearchFront({ onSearch, loading, error }: SearchFrontProps) {
   };
 
   return (
-    <div className="container mx-auto flex min-h-[75vh] w-full flex-col justify-center py-4 ">
-      <div className="pb-4 ">
+    <div className="mx-auto flex min-h-[75vh] w-full flex-col justify-center py-4 ">
+      <div className="pb-4">
         <h1 className="font-heading text-4xl">Hello there, </h1>
         <p className="text-sm font-normal">
-          Sign in to access an enhanced photography experience.
+          Sign in to access your photos from our cloud storage.
         </p>
       </div>
       <form onSubmit={handleSearch}>
-        <div className="flex max-w-[620px] items-center justify-center">
+        <div className="flex w-full items-center justify-center sm:max-w-[620px]">
           <Input
             className="w-full"
             type="text"
@@ -63,7 +63,7 @@ export function SearchFront({ onSearch, loading, error }: SearchFrontProps) {
           />
           <Button
             size="xl"
-            className="min-w-32 ml-2"
+            className="sm:min-w-32 ml-2"
             type="submit"
             disabled={loading}
           >

@@ -13,7 +13,7 @@ const GridNumbers = (data: SpaceObjectProps[]): string => {
   if (data.length > 4) {
     gridClass = "lg:grid-cols-6";
   } else {
-    gridClass = `lg:grid-cols-2`;
+    gridClass = `lg:grid-cols-3`;
   }
   return gridClass;
 };
@@ -21,7 +21,7 @@ const GridNumbers = (data: SpaceObjectProps[]): string => {
 export function SearchResult({ data, onGoBack }: SearchResultProps) {
   const gridClass = GridNumbers(data);
   return (
-    <div className="container py-4">
+    <div className="py-4">
       <div className="flex flex-1 items-center justify-between py-4">
         <Button size="xl" onClick={onGoBack}>
           Go Back

@@ -47,7 +47,7 @@ export default function SearchNavigation() {
   };
 
   return (
-    <div className="container ">
+    <div className="container">
       {!data.length ? (
         <SearchFront onSearch={handleSearch} loading={loading} error={error} />
       ) : (
