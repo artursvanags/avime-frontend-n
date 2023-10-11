@@ -34,7 +34,6 @@ export default function ListProducts() {
     cart_id: cart || undefined,
     currency_code: region?.countryCode,
   });
-  console.log(products);
 
   return (
     <div className="py-14">

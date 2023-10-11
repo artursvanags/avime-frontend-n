@@ -35,13 +35,18 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
     return 0;
   });
 
+  const GetPrice = ({ product }: { product: MedusaProduct | PricedProduct }) => {
+    const { cheapestPrice } = useProductPrice({
+      id: product.id!,
+      variantId: product.variants[0].id,
+    });
+    return cheapestPrice;
+  }
+
   return (
     <>
       {filteredProducts.map((p) => {
-        const { cheapestPrice } = useProductPrice({
-          id: p.id!,
-          variantId: p.variants[0].id,
-        });
+          const cheapestPrice = GetPrice({ product: p });
 
         return (
           <Grid.Item key={p.id}>
