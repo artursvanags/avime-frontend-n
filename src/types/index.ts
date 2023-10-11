@@ -22,3 +22,9 @@ export type MainNavItem = NavItem;
 export type MarketingConfig = {
   mainNav: MainNavItem[];
 };
+
+export type FeatureItems = {
+  src: string;
+  title?: string;
+  description?: string;
+};

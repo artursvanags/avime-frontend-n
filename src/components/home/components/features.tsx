@@ -1,27 +1,37 @@
+"use client";
+
 import Image from "next/image";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Grid from "@/components/global/grid";
+import Link from "next/link";
+import { FeatureItems } from "@/types";
+import { FeatureItemsConfig } from "@/config/site";
 
-type CardProp = {
-  src: string;
-  children: React.ReactNode;
-};
+interface ImageProps {
+  data: FeatureItems[];
+}
 
-function Card({ src, children }: CardProp) {
+function ImageCard({ data }: ImageProps) {
   return (
-    <div className="rounded border bg-stone-50 p-4 dark:bg-transparent">
-      <div className="space-y-2">
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            src={src}
-            loading="lazy"
-            fill
-            className="rounded-md object-cover"
-            alt="Image"
-          />
-        </AspectRatio>
-        {children}
-      </div>
-    </div>
+    <>
+      {data.map((data, index) => (
+        <Grid.Item
+          key={index}
+          className="relative inline-block h-full w-full rounded border bg-stone-50 p-4 dark:bg-transparent"
+        >
+          <div className="h-[220px] w-full">
+            <Image
+              src={data.src || "/default-image.jpg"}
+              width={420}
+              height={420}
+              className="h-full w-full bg-gray-200 object-cover"
+              alt={data.title || "Undefined"}
+            />
+          </div>
+          <h3 className="pb-1 pt-2 text-xl font-bold">{data.title}</h3>
+          <p className="text-sm text-muted-foreground">{data.description}</p>
+        </Grid.Item>
+      ))}
+    </>
   );
 }
 
@@ -33,37 +43,14 @@ export default function Features() {
     >
       <div className="container">
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-        Setting a New Standard in School Photography!
+          Setting a New Standard in School Photography!
         </h2>
         <p className="max-w-[42rem] pt-2 leading-normal text-muted-foreground sm:text-xl sm:leading-8">
           We make it perfect in every photo
         </p>
-        <div className="mx-auto grid grid-cols-1 justify-center gap-4 py-8 sm:grid-cols-3">
-          <Card src="https://images.unsplash.com/photo-1552666262-1f35b9080e83">
-            <h3 className="pt-2 text-xl font-bold">100% Quality</h3>
-            <p className="text-sm text-muted-foreground">
-              We take quality seriously! The products, photos, and service we
-              deliver is top tier. Our priority is making sure that we deliver
-              the results you expect!
-            </p>
-          </Card>
-          <Card src="https://images.unsplash.com/photo-1602595688238-9fffe12d5af3">
-            <h3 className="pt-2 text-xl font-bold">Modern</h3>
-            <p className="text-sm text-muted-foreground">
-              We have researched and researched and researched again what
-              parents and their children would like from school photos and we
-              listened.
-            </p>
-          </Card>
-          <Card src="https://images.unsplash.com/photo-1538448728514-b19826b97c9c">
-            <h3 className="pt-2 text-xl font-bold">Affordable</h3>
-            <p className="text-sm text-muted-foreground">
-              Quality doesnt have to be out of reach. We have made sure that
-              all of our products are qualitative without increasing the pricing
-              dramatically. We have options for everyone.
-            </p>
-          </Card>
-        </div>
+        <Grid className=" grid-cols-1 pt-4 sm:grid-cols-1 lg:grid-cols-3">
+          <ImageCard data={FeatureItemsConfig} />
+        </Grid>
       </div>
     </section>
   );
