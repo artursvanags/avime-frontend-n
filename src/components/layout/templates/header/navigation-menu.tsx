@@ -32,14 +32,10 @@ export default function Navigation({ menu }: { menu: NavItem[] }) {
 
       <div className="ml-auto flex flex-1 justify-end space-x-2">
         <Button asChild variant="outline">
-          <Link href="/store">
-            <Icons.Store className="mr-2 h-4 w-4" />
-            Store
+          <Link href="/access">
+            <Icons.Access className="mr-2 h-4 w-4" />
+            Access Photos
           </Link>
-        </Button>
-        <Button variant="outline">
-          <Icons.Access className="mr-2 h-4 w-4" />
-          Access Photos
         </Button>
         <AccountButton />
         <CartButton />
