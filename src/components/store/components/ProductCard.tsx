@@ -32,69 +32,70 @@ export function ProductCard({ products, productMeta }: CardProp) {
     return 0;
   });
 
-  const GetPrice = ({ product }: { product: MedusaProduct | PricedProduct }) => {
+  const GetPrice = ({
+    product,
+  }: {
+    product: MedusaProduct | PricedProduct;
+  }) => {
     const { cheapestPrice } = useProductPrice({
       id: product.id!,
       variantId: product.variants[0].id,
     });
     return cheapestPrice;
-  }
+  };
 
   return (
     <>
       {filteredProducts.map((p) => {
-          const cheapestPrice = GetPrice({ product: p });
+        const cheapestPrice = GetPrice({ product: p });
 
         return (
-        <Grid.Item key={p.id}>
-          <Link
-            href={`/products/${p.handle}`}
-            className="relative inline-block h-full w-full p-2 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
-          >
-            <div className="aspect-square">
-              <Image
-                src={p?.thumbnail || "/default-image.jpg"}
-                width={420}
-                height={420}
-                loading="lazy"
-                className="h-full w-full object-cover"
-                alt={p.title ?? "Product Title"}
-              />
-            </div>
+          <Grid.Item key={p.id}>
+            <Link
+              href={`/products/${p.handle}`}
+              className="relative inline-block h-full w-full p-2 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
+            >
+              <div className="aspect-square">
+                <Image
+                  src={p?.thumbnail || "/default-image.jpg"}
+                  width={420}
+                  height={420}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                  alt={p.title ?? "Product Title"}
+                />
+              </div>
 
-            <h3 className="pt-1 text-sm font-medium">{p.title}</h3>
-            <div className="pt-1 text-sm text-muted-foreground">
-              {!retrievingCustomer && customer ? (
-                <div>
-                  A${" "}
-                  
-                  {cheapestPrice ? (
-                    <>
-                      {cheapestPrice?.price_type === "sale" && (
-                        <span className="text-gray-500 line-through">
-                          {cheapestPrice.original_price}
+              <h3 className="pt-1 text-sm font-medium">{p.title}</h3>
+              <div className="pt-1 text-sm text-muted-foreground">
+                {!retrievingCustomer && customer ? (
+                  <div>
+                    {cheapestPrice ? (
+                      <>
+                        {cheapestPrice?.price_type === "sale" && (
+                          <span className="text-gray-500 line-through">
+                            {cheapestPrice.original_price}
+                          </span>
+                        )}
+                        <span
+                          className={cn("font-semibold", {
+                            "text-rose-500":
+                              cheapestPrice?.price_type === "sale",
+                          })}
+                        >
+                          {cheapestPrice?.calculated_price}
                         </span>
-                      )}
-                      <span
-                        className={cn("font-semibold", {
-                          "text-rose-500":
-                            cheapestPrice?.price_type === "sale",
-                        })}
-                      >
-                        {cheapestPrice?.calculated_price}
-                      </span>
-                    </>
-                  ) : (
-                    <div className="h-6 w-20 animate-pulse bg-gray-100"></div>
-                  )}
-
-                </div>
-              ) : (
-                <div>A$ Please Login to view Pricing</div>
-              )}
-            </div>
-          </Link>
-        </Grid.Item>
+                      </>
+                    ) : (
+                      <div className="h-6 w-20 animate-pulse bg-gray-100"></div>
+                    )}
+                  </div>
+                ) : (
+                  <div>A$ Please Login to view Pricing</div>
+                )}
+              </div>
+            </Link>
+          </Grid.Item>
         );
       })}
     </>
