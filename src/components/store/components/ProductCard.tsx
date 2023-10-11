@@ -4,8 +4,8 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import Link from "next/link";
 import Grid from "@/components/global/grid";
 import { useAccount } from "@/lib/context/account-context";
-import { findCheapestVariantPrice as price } from "@/lib/util/get-price";
-
+import useProductPrice from "@/lib/hooks/use-product-price";
+import { cn } from "@/lib/utils";
 type CardProp = {
   products: (MedusaProduct | PricedProduct)[];
   productMeta?: string;
@@ -32,37 +32,63 @@ export function ProductCard({ products, productMeta }: CardProp) {
     return 0;
   });
 
-
   return (
     <>
-      {filteredProducts.map((p) => (
-        <Grid.Item key={p.id}>
-          <Link
-            href={`/products/${p.handle}`}
-            className="relative inline-block h-full w-full p-2 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
-          >
-            <div className="aspect-square">
-              <Image
-                src={p?.thumbnail || "/default-image.jpg"}
-                width={420}
-                height={420}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                alt={p.title ?? "Product Title"}
-              />
-            </div>
+      {filteredProducts.map((p) => {
+        const { cheapestPrice } = useProductPrice({
+          id: p.id!,
+          variantId: p.variants[0].id,
+        });
 
-            <h3 className="pt-1 text-sm font-medium">{p.title}</h3>
-            <div className="pt-1 text-sm text-muted-foreground">
-              {!retrievingCustomer && customer ? (
-                <div>A$ {price(p)}</div>
-              ) : (
-                <div>A$ Please Login to view Pricing</div>
-              )}
-            </div>
-          </Link>
-        </Grid.Item>
-      ))}
+        return (
+          <Grid.Item key={p.id}>
+            <Link
+              href={`/products/${p.handle}`}
+              className="relative inline-block h-full w-full p-2 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
+            >
+              <div className="aspect-square">
+                <Image
+                  src={p?.thumbnail || "/default-image.jpg"}
+                  width={420}
+                  height={420}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                  alt={p.title ?? "Product Title"}
+                />
+              </div>
+
+              <h3 className="pt-1 text-sm font-medium">{p.title}</h3>
+              <div className="pt-1 text-sm text-muted-foreground">
+                {!retrievingCustomer && customer ? (
+                  <div>
+                    {cheapestPrice ? (
+                      <>
+                        {cheapestPrice?.price_type === "sale" && (
+                          <span className="text-gray-500 line-through">
+                            {cheapestPrice.original_price}
+                          </span>
+                        )}
+                        <span
+                          className={cn("font-semibold", {
+                            "text-rose-500":
+                              cheapestPrice?.price_type === "sale",
+                          })}
+                        >
+                          {cheapestPrice?.calculated_price}
+                        </span>
+                      </>
+                    ) : (
+                      <div className="h-6 w-20 animate-pulse bg-gray-100"></div>
+                    )}
+                  </div>
+                ) : (
+                  <div>A$ Please Login to view Pricing</div>
+                )}
+              </div>
+            </Link>
+          </Grid.Item>
+        );
+      })}
     </>
   );
 }
