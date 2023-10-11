@@ -57,6 +57,22 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
     }, 2000); // Delay for 2 seconds (2000 milliseconds)
   };
 
+  function ShowLoginWindow() {
+    return (
+      <div className="w-full rounded border p-4">
+        <p className=" text-sm text-muted-foreground pb-2">
+          It looks like you are not signed-in. Please sign in to be able to add
+          to cart and view pricing!
+        </p>
+        <Button asChild className="w-full" size={"xl"}>
+        <Link href="/account/login">
+          Sign-In
+          </Link>
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-y-2">
       {/* Product collection info*/}
@@ -72,8 +88,9 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       <h1 className="pt-1 font-heading text-5xl">{product.title}</h1>
 
       {/* Product pricing */}
-      {!retrievingCustomer && customer ? (
-        selectedPrice ? (
+      {!retrievingCustomer &&
+        customer &&
+        (selectedPrice ? (
           <div className="flex flex-col text-3xl font-bold">
             <span
               className={clsx("", {
@@ -98,11 +115,9 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           </div>
         ) : (
           <div></div>
-        )
-      ) : (
-        <>A$ Please Login to view Pricing</>
-      )}
-      {}
+        ))}
+
+      {/* Product description */}
       <div className="whitespace-pre-line pt-3 text-justify text-sm">
         {product.description}
       </div>
@@ -128,19 +143,20 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       {/* Product button*/}
       <div className="flex flex-col pt-3">
         {!retrievingCustomer && customer ? (
-          <Button
-            size={"xl"}
-            onClick={handleAddToCart}
-            disabled={adding}
-          >
-            {adding
-              ? <><Spinner className="animate-spin w-5 h-5 mr-2"/>Adding...</>
-              : !inStock
-              ? "Out of stock"
-              : buttonText}
+          <Button size={"xl"} onClick={handleAddToCart} disabled={adding}>
+            {adding ? (
+              <>
+                <Spinner className="mr-2 h-5 w-5 animate-spin" />
+                Adding...
+              </>
+            ) : !inStock ? (
+              "Out of stock"
+            ) : (
+              buttonText
+            )}
           </Button>
         ) : (
-          <>A$ Please Login to view Pricing</>
+          <ShowLoginWindow />
         )}
       </div>
     </div>
