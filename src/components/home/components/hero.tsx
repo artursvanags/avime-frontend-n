@@ -46,6 +46,7 @@ export default function Hero() {
             height={1024}
             className="h-full w-full scale-[1.4] object-contain "
             alt="Image"
+            priority
           />
         </div>
       </div>
