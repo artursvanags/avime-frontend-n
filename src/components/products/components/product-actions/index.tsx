@@ -10,7 +10,7 @@ import { useAccount } from "@/lib/context/account-context";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
-import { Spinner } from "@/config/icons";
+import { MyAccount, Spinner } from "@/config/icons";
 
 type ProductActionsProps = {
   product: PricedProduct;
@@ -59,16 +59,17 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
   function ShowLoginWindow() {
     return (
-      <div className="w-full rounded border p-4">
-        <p className=" text-sm text-muted-foreground pb-2">
+      <div className="w-full rounded border p-4 border-amber-500/50 bg-amber-700/5">
+        <p className=" text-sm text-muted-foreground pb-4">
           It looks like you are not signed-in. Please sign in to be able to add
           to cart and view pricing!
         </p>
-        <Button asChild className="w-full" size={"xl"}>
-        <Link href="/account/login">
-          Sign-In
-          </Link>
-        </Button>
+        <Button asChild className="w-full dark:bg-amber-50" size={"xl"}>
+            <Link href="/account/login">
+              <MyAccount.Login className="mr-2 h-4 w-4" />
+              Sign in
+            </Link>
+          </Button>
       </div>
     );
   }
