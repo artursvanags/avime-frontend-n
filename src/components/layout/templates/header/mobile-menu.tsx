@@ -38,15 +38,11 @@ export default function MobileNavigation({ menu }: { menu: NavItem[] }) {
         </p>
 
         <div className="flex space-x-2">
-          <Button asChild variant="outline">
+          <Button className="w-full justify-start" asChild variant="outline">
             <Link href="/store" onClick={handleSheetClose}>
               <Icons.Store className="mr-2 h-4 w-4" />
               Store
             </Link>
-          </Button>
-          <Button variant="outline">
-            <Icons.Access className="mr-2 h-4 w-4" />
-            Access Photos
           </Button>
         </div>
 
