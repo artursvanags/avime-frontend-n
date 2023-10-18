@@ -1,19 +1,19 @@
-import { useAccount } from "@/lib/context/account-context"
-import { Customer } from "@medusajs/medusa"
-import Input from "@/components/common/components/input"
-import { useUpdateMe } from "medusa-react"
-import React, { useEffect } from "react"
-import { useForm, useWatch } from "react-hook-form"
-import AccountInfo from "../account-info"
+import { useAccount } from "@/lib/context/account-context";
+import { Customer } from "@medusajs/medusa";
+import { Input } from "@/components/ui/input";
+import { useUpdateMe } from "medusa-react";
+import React, { useEffect } from "react";
+import { useForm, useWatch } from "react-hook-form";
+import AccountInfo from "../account-info";
 
 type MyInformationProps = {
-  customer: Omit<Customer, "password_hash">
-}
+  customer: Omit<Customer, "password_hash">;
+};
 
 type UpdateCustomerNameFormData = {
-  first_name: string
-  last_name: string
-}
+  first_name: string;
+  last_name: string;
+};
 
 const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
   const {
@@ -27,9 +27,9 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
       first_name: customer.first_name,
       last_name: customer.last_name,
     },
-  })
+  });
 
-  const { refetchCustomer } = useAccount()
+  const { refetchCustomer } = useAccount();
 
   const {
     mutate: update,
@@ -37,23 +37,23 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
     isSuccess,
     isError,
     reset: clearState,
-  } = useUpdateMe()
+  } = useUpdateMe();
 
   useEffect(() => {
     reset({
       first_name: customer.first_name,
       last_name: customer.last_name,
-    })
-  }, [customer, reset])
+    });
+  }, [customer, reset]);
 
   const firstName = useWatch({
     control,
     name: "first_name",
-  })
+  });
   const lastName = useWatch({
     control,
     name: "last_name",
-  })
+  });
 
   const updateName = (data: UpdateCustomerNameFormData) => {
     return update(
@@ -63,11 +63,11 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
       },
       {
         onSuccess: () => {
-          refetchCustomer()
+          refetchCustomer();
         },
-      }
-    )
-  }
+      },
+    );
+  };
 
   return (
     <form onSubmit={handleSubmit(updateName)} className="w-full">
@@ -80,24 +80,26 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
         clearState={clearState}
       >
         <div className="grid grid-cols-2 gap-x-4">
-          <Input
-            label="First name"
-            {...register("first_name", {
-              required: true,
-            })}
-            defaultValue={firstName}
-            errors={errors}
-          />
-          <Input
-            label="Last name"
-            {...register("last_name", { required: true })}
-            defaultValue={lastName}
-            errors={errors}
-          />
+          <div>
+            <p className="py-1 text-sm text-muted-foreground">First Name</p>
+            <Input
+              {...register("first_name", {
+                required: true,
+              })}
+              defaultValue={firstName}
+            />
+          </div>
+          <div>
+            <p className="py-1 text-sm text-muted-foreground">Last Name</p>
+            <Input
+              {...register("last_name", { required: true })}
+              defaultValue={lastName}
+            />
+          </div>
         </div>
       </AccountInfo>
     </form>
-  )
-}
+  );
+};
 
-export default ProfileName
+export default ProfileName;

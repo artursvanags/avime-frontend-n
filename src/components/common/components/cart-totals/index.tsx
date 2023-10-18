@@ -1,10 +1,10 @@
-import { Cart } from "@medusajs/medusa"
-import { formatAmount } from "medusa-react"
-import React from "react"
+import { Cart } from "@medusajs/medusa";
+import { formatAmount } from "medusa-react";
+import React from "react";
 
 type CartTotalsProps = {
-  cart: Omit<Cart, "refundable_amount" | "refunded_total">
-}
+  cart: Omit<Cart, "refundable_amount" | "refunded_total">;
+};
 
 const CartTotals: React.FC<CartTotalsProps> = ({ cart }) => {
   const {
@@ -14,20 +14,20 @@ const CartTotals: React.FC<CartTotalsProps> = ({ cart }) => {
     tax_total,
     shipping_total,
     total,
-  } = cart
+  } = cart;
 
   const getAmount = (amount: number | null | undefined) => {
     return formatAmount({
       amount: amount || 0,
       region: cart.region,
       includeTaxes: false,
-    })
-  }
+    });
+  };
 
   return (
     <div>
-      <div className="text-small-regular text-gray-700">
-        <div className="flex items-center justify-between text-base-regular text-gray-900 mb-2">
+      <div>
+        <div className="mb-2 flex items-center justify-between text-2xl font-bold">
           <span>Subtotal</span>
           <span>{getAmount(subtotal)}</span>
         </div>
@@ -53,14 +53,14 @@ const CartTotals: React.FC<CartTotalsProps> = ({ cart }) => {
             <span>{getAmount(tax_total)}</span>
           </div>
         </div>
-        <div className="h-px w-full border-b border-gray-200 border-dashed my-4" />
-        <div className="flex items-center justify-between text-base-regular text-gray-900 mb-2">
+        <div className="my-4 h-px w-full border-b border-dashed dark:border-white" />
+        <div className="mb-2 flex items-center justify-between">
           <span>Total</span>
           <span>{getAmount(total)}</span>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CartTotals
+export default CartTotals;

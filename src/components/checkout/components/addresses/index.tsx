@@ -14,9 +14,9 @@ const Addresses = () => {
     cart,
   } = useCheckout()
   return (
-    <div className="bg-white">
+    <div className="">
       <div className="text-xl-semi flex items-center gap-x-4 px-8 pb-6 pt-8">
-        <div className="bg-gray-900 w-8 h-8 rounded-full text-white flex justify-center items-center text-sm">
+        <div className="bg-gray-900 w-8 h-8 rounded-full flex justify-center items-center text-sm">
           1
         </div>
         <h2>Shipping address</h2>
@@ -34,7 +34,7 @@ const Addresses = () => {
           {!checked && (
             <div>
               <div className="text-xl-semi flex items-center gap-x-4 pb-6 pt-8">
-                <div className="bg-gray-900 w-8 h-8 rounded-full text-white flex justify-center items-center font-mono text-sm">
+                <div className="bg-gray-900 w-8 h-8 rounded-full flex justify-center items-center font-mono text-sm">
                   2
                 </div>
                 <h2>Billing address</h2>
@@ -51,7 +51,7 @@ const Addresses = () => {
         </div>
       ) : (
         <div>
-          <div className="bg-gray-50 px-8 py-6 text-small-regular">
+          <div className=" px-8 py-6 text-small-regular">
             {cart && cart.shipping_address ? (
               <div className="flex items-start gap-x-8">
                 <div className="bg-green-400 rounded-full min-w-[24px] h-6 flex items-center justify-center text-white text-small-regular">

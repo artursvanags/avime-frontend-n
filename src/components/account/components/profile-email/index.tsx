@@ -1,6 +1,6 @@
 import { useAccount } from "@/lib/context/account-context"
 import { Customer } from "@medusajs/medusa"
-import Input from "@/components/common/components/input"
+import { Input } from "@/components/ui/input";
 import { useUpdateMe } from "medusa-react"
 import React, { useEffect } from "react"
 import { useForm, useWatch } from "react-hook-form"
@@ -81,14 +81,16 @@ const ProfileEmail: React.FC<MyInformationProps> = ({ customer }) => {
         clearState={clearState}
       >
         <div className="grid grid-cols-1 gap-y-2">
+        <div>
+            <p className="py-1 text-sm text-muted-foreground">E-Mail Address</p>
           <Input
-            label="Email"
+ 
             {...register("email", {
               required: true,
             })}
             defaultValue={email}
-            errors={errors}
           />
+          </div>
         </div>
       </AccountInfo>
     </form>
