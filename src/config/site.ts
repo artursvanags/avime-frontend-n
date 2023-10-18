@@ -48,3 +48,9 @@ export const FeatureItemsConfig: FeatureItems[] = [
       "From friendships to sports activities and formals, these are the moments we hold closest to our hearts. Allow us to capture these invaluable memories for you.",
   },
 ];
+
+export const TextConfig = {
+  index: {
+    SignInError: "A$ Please sign-in to view Pricing",
+  }
+};
