@@ -3,6 +3,7 @@ import {
   PageHeaderProps,
 } from "@/components/layout/templates/page-header";
 import type { Metadata } from "next";
+import { ContactUs } from "./ContactUs";
 
 const info: PageHeaderProps = {
   title: "Contacts",
@@ -18,6 +19,7 @@ export default function ContactsPage() {
   return (
     <>
       <PageHeader title={info.title} description={info.description} />
+      <ContactUs/>
     </>
   );
 }
