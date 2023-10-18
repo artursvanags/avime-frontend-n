@@ -6,6 +6,7 @@ import Grid from "@/components/global/grid";
 import { useAccount } from "@/lib/context/account-context";
 import useProductPrice from "@/lib/hooks/use-product-price";
 import { cn } from "@/lib/utils";
+import { TextConfig } from "@/config/site";
 type CardProp = {
   products: (MedusaProduct | PricedProduct)[];
   productMeta?: string;
@@ -91,7 +92,7 @@ export function ProductCard({ products, productMeta }: CardProp) {
                     )}
                   </div>
                 ) : (
-                  <div>A$ Please Login to view Pricing</div>
+                  <div>{TextConfig.index.SignInError}</div>
                 )}
               </div>
             </Link>

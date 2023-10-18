@@ -8,6 +8,7 @@ import { findCheapestVariantPrice as price } from "@/lib/util/get-price";
 import { Icons } from "@/config/icons";
 import useProductPrice from "@/lib/hooks/use-product-price";
 import { cn } from "@/lib/utils";
+import { TextConfig } from "@/config/site";
 
 type CardProp = {
   products: (MedusaProduct | PricedProduct)[];
@@ -92,7 +93,7 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
                       )}
                     </div>
                   ) : (
-                    <div>A$ Please Login to view Pricing</div>
+                    <div>{TextConfig.index.SignInError}</div>
                   )}
                 </div>
                 <div className="whitespace-pre-line pt-3 text-justify text-sm">
