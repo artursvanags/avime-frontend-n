@@ -20,8 +20,8 @@ export async function POST(request: Request) {
   `;
 
   const data = {
-    to: "info@avime.au",
-    from: "info@avime.au",
+    to: "contact@avime.au",
+    from: "contact@avime.au",
     subject: `Contact Form Submission - ${body.email}`,
     text: message,
     html: message.replace(/\r\n/g, "<br>"),

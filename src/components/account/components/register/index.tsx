@@ -1,64 +1,65 @@
-import { medusaClient } from "@/lib/config"
-import { LOGIN_VIEW, useAccount } from "@/lib/context/account-context"
-import Button from "@/components/common/components/button"
-import Input from "@/components/common/components/input"
-import Spinner from "@/components/common/icons/spinner"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
-import { FieldValues, useForm } from "react-hook-form"
+import { medusaClient } from "@/lib/config";
+import { LOGIN_VIEW, useAccount } from "@/lib/context/account-context";
+import Button from "@/components/common/components/button";
+import Input from "@/components/common/components/input";
+import Spinner from "@/components/common/icons/spinner";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
 
 interface RegisterCredentials extends FieldValues {
-  first_name: string
-  last_name: string
-  email: string
-  password: string
-  phone?: string
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  phone?: string;
 }
 
 const Register = () => {
-  const { loginView, refetchCustomer } = useAccount()
-  const [_, setCurrentView] = loginView
-  const [authError, setAuthError] = useState<string | undefined>(undefined)
-  const router = useRouter()
-
+  const { customer, loginView, refetchCustomer } = useAccount();
+  const [_, setCurrentView] = loginView;
+  const [authError, setAuthError] = useState<string | undefined>(undefined);
+  const router = useRouter();
   const handleError = (e: Error) => {
-    setAuthError("An error occured. Please try again.")
-  }
+    setAuthError("An error occured. Please try again.");
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<RegisterCredentials>()
+  } = useForm<RegisterCredentials>();
 
   const onSubmit = handleSubmit(async (credentials) => {
     await medusaClient.customers
       .create(credentials)
       .then(() => {
-        refetchCustomer()
-        router.push("/account")
+        refetchCustomer();
+        router.push("/account");
       })
-      .catch(handleError)
-  })
+      .catch(handleError);
+  });
 
   return (
-    <div className="max-w-sm flex flex-col items-center mt-12">
+    <div className="mt-12 flex max-w-sm flex-col items-center">
       {isSubmitting && (
-        <div className="z-10 fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-10 flex items-center justify-center bg-white bg-opacity-50">
           <Spinner size={24} />
         </div>
       )}
-      <h1 className="text-large-semi uppercase mb-6">Become a Acme Member</h1>
-      <p className="text-center text-base-regular text-gray-700 mb-4">
+      <h1 className="text-large-semi mb-6 uppercase">Become a Acme Member</h1>
+      <p className="text-base-regular mb-4 text-center text-gray-700">
         Create your Acme Member profile, and get access to an enhanced shopping
         experience.
       </p>
-      <form className="w-full flex flex-col" onSubmit={onSubmit}>
-        <div className="flex flex-col w-full gap-y-2">
+      <form className="flex w-full flex-col" onSubmit={onSubmit}>
+        <div className="flex w-full flex-col gap-y-2">
           <Input
             label="First name"
-            {...register("first_name", { required: "First name is required" })}
+            {...register("first_name", {
+              required: "First name is required",
+            })}
             autoComplete="given-name"
             errors={errors}
           />
@@ -92,12 +93,12 @@ const Register = () => {
         </div>
         {authError && (
           <div>
-            <span className="text-rose-500 w-full text-small-regular">
+            <span className="text-small-regular w-full text-rose-500">
               These credentials do not match our records
             </span>
           </div>
         )}
-        <span className="text-center text-gray-700 text-small-regular mt-6">
+        <span className="text-small-regular mt-6 text-center text-gray-700">
           By creating an account, you agree to Acme&apos;s{" "}
           <Link href="/content/privacy-policy" className="underline">
             Privacy Policy
@@ -110,7 +111,7 @@ const Register = () => {
         </span>
         <Button className="mt-6">Join</Button>
       </form>
-      <span className="text-center text-gray-700 text-small-regular mt-6">
+      <span className="text-small-regular mt-6 text-center text-gray-700">
         Already a member?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
@@ -121,7 +122,6 @@ const Register = () => {
         .
       </span>
     </div>
-  )
-}
-
-export default Register
+  );
+};
+export default Register;

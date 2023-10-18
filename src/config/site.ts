@@ -54,3 +54,8 @@ export const TextConfig = {
     SignInError: "A$ Please sign-in to view Pricing",
   }
 };
+
+export const ADMIN_EMAIL = [
+  "karlis@avime.com.au",
+  "arturs.vanags320@gmail.com"
+]

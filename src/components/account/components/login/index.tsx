@@ -88,6 +88,7 @@ const Login = () => {
           )}
         </Button>
       </form>
+      {/*
       <div className="mt-4 flex flex-col gap-2 border-t">
         <Button
           size={"xl"}
@@ -103,7 +104,7 @@ const Login = () => {
           process.{" "}
         </p>
       </div>
-
+      */}
       {/* <span className="text-small-regular mt-6 text-center text-gray-700">
         Not a member?{" "}
         <button
