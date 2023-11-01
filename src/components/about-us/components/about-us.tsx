@@ -19,7 +19,7 @@ export default function AboutUs({ text }: any) {
               <br />
               Sure, we could bore you with a list of credentials, boasting about
               our over a decade long photography experience and the fancy
-              cameras we use, but let's be real—does all that jazz really
+              cameras we use, but let&apos;s be real—does all that jazz really
               matter? Not so much!
               <br />
               <br />
@@ -61,17 +61,17 @@ export default function AboutUs({ text }: any) {
           <div className="pb-6 font-extrabold">To start off - Quality.</div>
           Precision in lighting to complement every skin tone, a background that
           resonates with modern standards, and a careful eye for details like
-          untangled shirts, well-groomed hair, and eyes free from squints. It's
-          all about delivering excellence.
+          untangled shirts, well-groomed hair, and eyes free from squints.
+          It&apos;s all about delivering excellence.
           <br />
           <br />
           <div className="pb-6 font-extrabold">
             Taking a new approach - Modernising the outdated.
           </div>
           Reinventing the products in our packages was a big one! We wanted to
-          make sure that we aren't selling you low-quality items just for the
-          sake of making a sale. Our goal is and will be to offer products that
-          you would actually be able to use in the real world, rather than
+          make sure that we aren&apos;t selling you low-quality items just for
+          the sake of making a sale. Our goal is and will be to offer products
+          that you would actually be able to use in the real world, rather than
           having them collect dust in the cupboard or above the fridge, or
           making you feel embarrassed when showcasing them to your neighbor when
           they come over for a vegemite scroll.
@@ -79,17 +79,17 @@ export default function AboutUs({ text }: any) {
           <br />
           When purchasing our school booklet, you will receive a booklet with a
           warm welcome from your school principal, a photo of your school, and
-          shots of you and all your classmates. It's like an appetizer at a
-          restaurant - it tastes great but won't fill you up. Level up to our
-          &lsquo;Artist in the Making&rsquo; package, which includes the school
-          booklet, two 5x7 photos (one for each grandparent to frame), and four
-          wallet photos for Mum and Dad to keep with them at all times! In our
-          &lsquo;Garage Band Vocalist&rsquo; package, we've added an 8x10 photo
-          for you to proudly display on your own wall. And if you're ready to
-          fully embrace the photography experience, definitely check out our
-          &lsquo;Rockstar&rsquo; package that includes everything mentioned
-          above and adds extra 2x 4x6 photos as well as a what we call a
-          &ldquo;learning set&rdquo; - Bookmark and calendar.
+          shots of you and all your classmates. It&apos;s like an appetizer at a
+          restaurant - it tastes great but won&apos;t fill you up. Level up to
+          our &lsquo;Artist in the Making&rsquo; package, which includes the
+          school booklet, two 5x7 photos (one for each grandparent to frame),
+          and four wallet photos for Mum and Dad to keep with them at all times!
+          In our &lsquo;Garage Band Vocalist&rsquo; package, we&apos;ve added an
+          8x10 photo for you to proudly display on your own wall. And if
+          you&apos;re ready to fully embrace the photography experience,
+          definitely check out our &lsquo;Rockstar&rsquo; package that includes
+          everything mentioned above and adds extra 2x 4x6 photos as well as a
+          what we call a &ldquo;learning set&rdquo; - Bookmark and calendar.
         </div>
       </section>
     </>
