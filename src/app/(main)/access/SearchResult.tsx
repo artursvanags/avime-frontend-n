@@ -26,11 +26,11 @@ export function SearchResult({ data, onGoBack }: SearchResultProps) {
         <Button size="xl" onClick={onGoBack}>
           Go Back
         </Button>
-        {(
+        {/* {(
           data.reduce((totalSize, a) => totalSize + (a.Size ?? 0), 0) /
           (1024 * 1024)
         ).toFixed(2)}
-        MB
+        MB */}
       </div>
       <Grid className={`grid-cols-2 sm:grid-cols-2 ${gridClass}`}>
         {data.map((res, index) => (
