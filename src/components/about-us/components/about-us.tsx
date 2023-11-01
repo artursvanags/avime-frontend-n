@@ -27,14 +27,14 @@ export default function AboutUs({ text }: any) {
               <span className="font-extrabold">
                 Why would you choose AVIME for your school photography needs?
               </span>
-              And the answer is super simple – because, as our slogan says,
-              &apos;Elevating elegance, capturing legacy,&apos; we mean it!
+              And the answer is super simple - because, as our slogan says,
+              &lsquo;Elevating elegance, capturing legacy,&rsquo; we mean it!
               <br />
               <br />
-              School photography seems like it&apos;s been caught in a &apos;90s
-              time warp, doesn&apos;t it? Those unappealing &quot;blue,
-              cloudy&quot; backgrounds and extra photos crammed into your
-              package just to bulk it up, keychains that scratch, the bent
+              School photography seems like it&rsquo;s been caught in a
+              &lsquo;90s time warp, doesn&rsquo;t it? Those unappealing
+              &quot;blue, cloudy&quot; backgrounds and extra photos crammed into
+              your package just to bulk it up, keychains that scratch, the bent
               corners on those bookmarks… Yuck! It&rsquo;s time to say goodbye
               to the old and in with the new! Don&rsquo;t get us wrong. We are
               still keeping the tradition to have your headshot taken every
@@ -58,7 +58,7 @@ export default function AboutUs({ text }: any) {
         </div>
 
         <div className="pb-6 leading-normal sm:text-xl sm:leading-8">
-          <div className="pb-6 font-extrabold">To start off – Quality.</div>
+          <div className="pb-6 font-extrabold">To start off - Quality.</div>
           Precision in lighting to complement every skin tone, a background that
           resonates with modern standards, and a careful eye for details like
           untangled shirts, well-groomed hair, and eyes free from squints. It's
@@ -66,16 +66,7 @@ export default function AboutUs({ text }: any) {
           <br />
           <br />
           <div className="pb-6 font-extrabold">
-            Taking a new approach – Modernising the outdated.
-          </div>
-          Precision in lighting to complement every skin tone, a background that
-          resonates with modern standards, and a careful eye for details like
-          untangled shirts, well-groomed hair, and eyes free from squints. It's
-          all about delivering excellence.
-          <br />
-          <br />
-          <div className="pb-6 font-extrabold">
-            Taking a new approach – Modernising the outdated.
+            Taking a new approach - Modernising the outdated.
           </div>
           Reinventing the products in our packages was a big one! We wanted to
           make sure that we aren't selling you low-quality items just for the
@@ -89,7 +80,7 @@ export default function AboutUs({ text }: any) {
           When purchasing our school booklet, you will receive a booklet with a
           warm welcome from your school principal, a photo of your school, and
           shots of you and all your classmates. It's like an appetizer at a
-          restaurant – it tastes great but won't fill you up. Level up to our
+          restaurant - it tastes great but won't fill you up. Level up to our
           &lsquo;Artist in the Making&rsquo; package, which includes the school
           booklet, two 5x7 photos (one for each grandparent to frame), and four
           wallet photos for Mum and Dad to keep with them at all times! In our
@@ -98,7 +89,7 @@ export default function AboutUs({ text }: any) {
           fully embrace the photography experience, definitely check out our
           &lsquo;Rockstar&rsquo; package that includes everything mentioned
           above and adds extra 2x 4x6 photos as well as a what we call a
-          &ldquo;learning set&rdquo; – Bookmark and calendar.
+          &ldquo;learning set&rdquo; - Bookmark and calendar.
         </div>
       </section>
     </>
