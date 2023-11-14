@@ -11,15 +11,15 @@ const info: PageHeaderProps = {
 };
 
 export const metadata: Metadata = {
-  title: info.title,
-  description: info.description,
+  title: "Contacts",
+  description: "Get in touch with us to book us in for your school!",
 };
 
 export default function ContactsPage() {
   return (
     <>
       <PageHeader title={info.title} description={info.description} />
-      <ContactUs/>
+      <ContactUs />
     </>
   );
 }

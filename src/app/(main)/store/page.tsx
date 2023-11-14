@@ -6,13 +6,13 @@ import ListProducts from "@/components/store/templates/ListProducts";
 import type { Metadata } from "next";
 
 const info: PageHeaderProps = {
-  title: "Store",
+  title: "Order Photos",
   description: "View our current product catalog!",
 };
 
 export const metadata: Metadata = {
   title: info.title,
-  description: info.description,
+  description: "Log in. View Cart. Order photos online with few simple clicks!",
 };
 
 export default function StorePage() {

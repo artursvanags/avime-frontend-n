@@ -11,11 +11,11 @@ const info: PageHeaderProps = {
 };
 
 export const metadata: Metadata = {
-  title: info.title,
-  description: info.description,
+  title: "About Us",
+  description: "Why choose AVIME? It's simple, we modernise the old!",
 };
 
-const aboutUsText:string = `
+const aboutUsText: string = `
 Hey There!
 
 Thanks a lot for your curiosity in getting to know us a bit better.
