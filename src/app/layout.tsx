@@ -11,7 +11,6 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { Toaster } from "@/components/ui/toaster";
 
-
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -24,7 +23,7 @@ const fontHeading = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
+    default: `${siteConfig.name} - Australia's Best School Photography Company`,
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -35,6 +34,12 @@ export const metadata: Metadata = {
       url: "https://github.com/artursvanags",
     },
   ],
+  openGraph: {
+    images: {
+      url: `${siteConfig.ogImage}`,
+      alt: "AVIME School Client Testamonial",
+    },
+  },
   creator: siteConfig.developer,
 };
 

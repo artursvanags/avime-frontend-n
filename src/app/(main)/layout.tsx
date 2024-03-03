@@ -1,10 +1,10 @@
-import Footer from "@/components/layout/templates/footer"
-import SiteHeader from "@/components/layout/templates/header/index"
+import Footer from "@/components/layout/templates/footer";
+import SiteHeader from "@/components/layout/templates/header/index";
 
 export default function PageLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <>
@@ -12,5 +12,5 @@ export default function PageLayout({
       {children}
       <Footer />
     </>
-  )
+  );
 }

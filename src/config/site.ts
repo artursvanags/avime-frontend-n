@@ -2,15 +2,37 @@ import { SiteConfig, NavItem, FeatureItems } from "@/types/index";
 
 export const siteConfig: SiteConfig = {
   name: "AVIME",
-  description: "A complete management kit for 3D printing systems.",
-  developer: "Stellar Labs SIA",
-  author: "Stellar Labs SIA",
+  description:
+    "Australia's best school photography company. Revolutionising how you view school photos. Making Australian schools great again, one photo at a time.",
+  developer: "AVIME PTY LTD",
+  author: "AVIME PTY LTD",
   url: process.env.NEXT_PUBLIC_SITE_URL as string,
-  ogImage: "#",
+  ogImage: "/features/2.jpg",
   links: {
     facebook: "#",
   },
-  keywords: ["3D Printing", "3D", "Printing"],
+  keywords: [
+    "AVIME",
+    "Australia",
+    "School Photography",
+    "Best School Photography",
+    "Australian Schools",
+    "School Photos",
+    "Quality School Pictures",
+    "School Memories",
+    "School",
+    "Photography",
+    "Photographer",
+    "Book",
+    "Bookings",
+    "Order photos",
+    "Photo printing",
+    "Photos",
+    "Mediahouse",
+    "Memories",
+    "Gold Coast",
+    "Queensland",
+  ],
 };
 
 export const NavigationConfig: NavItem[] = [
@@ -52,10 +74,10 @@ export const FeatureItemsConfig: FeatureItems[] = [
 export const TextConfig = {
   index: {
     SignInError: "A$ Please sign-in to view Pricing",
-  }
+  },
 };
 
 export const ADMIN_EMAIL = [
   "karlis@avime.com.au",
-  "arturs.vanags320@gmail.com"
-]
+  "arturs.vanags320@gmail.com",
+];
