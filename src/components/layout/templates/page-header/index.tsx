@@ -1,26 +1,28 @@
 import { cn } from "@/lib/utils";
 
 export type PageHeaderProps = {
-  title?: string;
+  title: string;
   description?: string;
   className?: string;
 };
-
-export function PageHeader({ title, description, ...props }: PageHeaderProps) { 
+//items-center justify-center text-center
+export function PageHeader({ title, description, ...props }: PageHeaderProps) {
   return (
     <section
       className={cn(
-        "py-8 dark:bg-transparent md:py-12 lg:py-24",
+        "container flex flex-col py-8 dark:bg-transparent md:py-12 lg:py-24",
         props.className,
       )}
     >
-      <div className="container">
+      <div>
         <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          {title ? title : "Header"}
+          {title}
         </h1>
-        <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          {description ? description : "Description text here"}
-        </p>
+        {description && (
+          <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+            {description}
+          </p>
+        )}
       </div>
     </section>
   );
