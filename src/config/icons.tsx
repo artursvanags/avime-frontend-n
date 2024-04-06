@@ -20,7 +20,9 @@ import {
   Package,
   CreditCard,
   Plus,
-  Minus
+  Minus,
+  Phone,
+  Mail,
 } from "lucide-react";
 
 import Image from "next/image";
@@ -88,6 +90,11 @@ export const ThemeIcons = {
   System: Laptop,
 };
 
+export const ContactsIcons = {
+  Phone: Phone,
+  Email: Mail,
+};
+
 export const MyAccount = {
   Account: School,
   Billing: CreditCard,
@@ -99,6 +106,5 @@ export const MyAccount = {
 export const DropdownQuantityIcons = {
   Plus: Plus,
   Minus: Minus,
-
 };
 export const Spinner = Loader2;
