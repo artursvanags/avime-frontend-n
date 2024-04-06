@@ -26,7 +26,11 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <PageHeader title={info.title} description={info.description} />
+      <PageHeader
+        title={info.title}
+        description={info.description}
+        className="lg:py-7"
+      />
       <div className="container mb-12 py-8">
         <Accordion type="single" collapsible>
           <AccordionItem value="payment-methods">
