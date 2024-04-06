@@ -7,8 +7,8 @@ export default function AboutUs({ text }: any) {
         id="about-us"
         className="container border-t py-8 dark:bg-transparent md:py-12 lg:py-24"
       >
-        <div className="grid gap-4 lg:grid-cols-2">
-          <div className="space-y-3 pb-6 leading-normal sm:text-xl sm:leading-8">
+        <div className="grid gap-4 lg:grid-cols-6">
+          <div className="col-span-4 mr-12 space-y-3 pb-6 leading-normal sm:text-xl sm:leading-8">
             <p>
               Hey There!
               <br />
@@ -48,13 +48,15 @@ export default function AboutUs({ text }: any) {
             </p>
           </div>
 
-          <Image
-            src="/about-us/image.jpeg"
-            width={500}
-            height={500}
-            alt="Picture of the author"
-            className="order-first w-full rounded lg:order-last"
-          />
+          <div className="col-span-2 hidden sm:block">
+            <Image
+              src="/about-us/image.jpeg"
+              width={500}
+              height={500}
+              alt="Picture of the author"
+              className="order-first w-full rounded lg:order-last"
+            />
+          </div>
         </div>
 
         <div className="pb-6 leading-normal sm:text-xl sm:leading-8">
