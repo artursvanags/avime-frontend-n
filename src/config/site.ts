@@ -45,12 +45,12 @@ export const NavigationConfig: NavItem[] = [
     href: "/contact-us",
   },
   {
-    title: "Access Photos",
-    href: "/access",
-  },
-  {
     title: "FAQ",
     href: "/faq",
+  },
+  {
+    title: "Access Photos",
+    href: "/access",
   },
 ];
 
