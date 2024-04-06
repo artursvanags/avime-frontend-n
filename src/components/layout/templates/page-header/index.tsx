@@ -36,7 +36,7 @@ export function PageHeaderTwo({
   return (
     <section
       className={cn(
-        "border-b bg-stone-950 py-8 text-white md:py-12 lg:py-48",
+        "border-b bg-stone-950 py-8 text-white md:py-12",
         className,
       )}
     >
