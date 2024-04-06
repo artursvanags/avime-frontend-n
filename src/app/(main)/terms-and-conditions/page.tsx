@@ -323,15 +323,23 @@ export default function Page() {
 
           <section>
             <h2 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
-              Third-Party Providers:
+              Third-Party Providers and Services:
             </h2>
             <p className="leading-7 [&:not(:first-child)]:mt-6">
-              Our websites list third-party associates. We do not share any
-              personal information with these associates without your or your
-              school&apos;s consent. It is your responsibility to inquire about
-              the terms and conditions and privacy policies of each third-party
-              partner and associate.
+              Our websites utilize services from third-party providers for
+              various functionalities. While we ensure these services adhere to
+              high standards of data protection and privacy, we do not directly
+              share any personal information with these providers without your
+              explicit consent. It remains your responsibility to review the
+              terms, conditions, and privacy policies of each third-party
+              service we integrate with our platform. The services include:
             </p>
+            <ul className="list-disc pl-6">
+              <li>DigitalOcean</li>
+              <li>Google Analytics</li>
+              <li>Facebook Pixels</li>
+              <li>Stripe Payments</li>
+            </ul>
           </section>
 
           <section>
