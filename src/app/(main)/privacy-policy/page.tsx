@@ -6,8 +6,8 @@ import {
 } from "@/components/layout/templates/page-header";
 
 const info: PageHeaderProps = {
-  title: "Terms and Conditions",
-  description: "Please carefully review the following terms.",
+  title: "Privacy Policy",
+  description: "We encourage you to thoroughly review our privacy policy.",
 };
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function Page() {
       <PageHeader
         title={info.title}
         description={info.description}
-        className="md:items-center md:text-center"
+        className="md:items-center md:text-center lg:pb-4"
       />
       <div className="container mb-12 grid max-w-3xl gap-4 py-8">
         <div className="grid gap-4 border-b pb-8">

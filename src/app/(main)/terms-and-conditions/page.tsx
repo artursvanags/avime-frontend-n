@@ -21,7 +21,7 @@ export default function Page() {
       <PageHeader
         title={info.title}
         description={info.description}
-        className="md:items-center md:text-center"
+        className="md:items-center md:text-center lg:pb-4"
       />
       <div className="container mb-12 grid max-w-3xl gap-4 py-8">
         <div className="grid gap-4 border-b pb-8">
