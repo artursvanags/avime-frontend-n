@@ -41,12 +41,27 @@ export const NavigationConfig: NavItem[] = [
     href: "/about-us",
   },
   {
-    title: "Contacts",
-    href: "/contacts",
+    title: "Contact Us",
+    href: "/contact-us",
   },
   {
     title: "Access Photos",
     href: "/access",
+  },
+  {
+    title: "FAQ",
+    href: "/faq",
+  },
+];
+
+export const FooterNavigationConfig: NavItem[] = [
+  {
+    title: "Privacy Policy",
+    href: "/privacy-policy",
+  },
+  {
+    title: "Terms and Conditions",
+    href: "/terms-and-conditions",
   },
 ];
 
