@@ -17,6 +17,10 @@ const PaymentInfoMap: Record<string, { title: string; description: string }> = {
     title: "Credit card",
     description: "Secure payment with credit card",
   },
+  apple_pay: {
+    title: "Apple Pay",
+    description: "Secure payment with Apple Pay",
+  },
   "stripe-ideal": {
     title: "iDEAL",
     description: "Secure payment with iDEAL",
