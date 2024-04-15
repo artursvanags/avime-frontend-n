@@ -1,31 +1,31 @@
-import { RadioGroup } from "@headlessui/react"
-import { ErrorMessage } from "@hookform/error-message"
-import { useCheckout } from "@/lib/context/checkout-context"
-import { Cart } from "@medusajs/medusa"
-import Radio from "@/components/common/components/radio"
-import Spinner from "@/components/common/icons/spinner"
-import clsx from "clsx"
-import { formatAmount, useCart, useCartShippingOptions } from "medusa-react"
-import React, { useEffect, useMemo } from "react"
-import { Controller, useForm } from "react-hook-form"
-import StepContainer from "../step-container"
+import { RadioGroup } from "@headlessui/react";
+import { ErrorMessage } from "@hookform/error-message";
+import { useCheckout } from "@/lib/context/checkout-context";
+import { Cart } from "@medusajs/medusa";
+import Radio from "@/components/common/components/radio";
+import Spinner from "@/components/common/icons/spinner";
+import clsx from "clsx";
+import { formatAmount, useCart, useCartShippingOptions } from "medusa-react";
+import React, { useEffect, useMemo } from "react";
+import { Controller, useForm } from "react-hook-form";
+import StepContainer from "../step-container";
 
 type ShippingOption = {
-  value?: string
-  label?: string
-  price: string
-}
+  value?: string;
+  label?: string;
+  price: string;
+};
 
 type ShippingProps = {
-  cart: Omit<Cart, "refundable_amount" | "refunded_total">
-}
+  cart: Omit<Cart, "refundable_amount" | "refunded_total">;
+};
 
 type ShippingFormProps = {
-  soId: string
-}
+  soId: string;
+};
 
 const Shipping: React.FC<ShippingProps> = ({ cart }) => {
-  const { addShippingMethod, setCart } = useCart()
+  const { addShippingMethod, setCart } = useCart();
   const {
     control,
     setError,
@@ -34,21 +34,21 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
     defaultValues: {
       soId: cart.shipping_methods?.[0]?.shipping_option_id,
     },
-  })
+  });
 
   // Fetch shipping options
   const { shipping_options, refetch } = useCartShippingOptions(cart.id, {
     enabled: !!cart.id,
-  })
+  });
 
   // Any time the cart changes we need to ensure that we are displaying valid shipping options
   useEffect(() => {
     const refetchShipping = async () => {
-      await refetch()
-    }
+      await refetch();
+    };
 
-    refetchShipping()
-  }, [cart, refetch])
+    refetchShipping();
+  }, [cart, refetch]);
 
   const submitShippingOption = (soId: string) => {
     addShippingMethod.mutate(
@@ -63,16 +63,16 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
               message:
                 "An error occurred while adding shipping. Please try again.",
             },
-            { shouldFocus: true }
+            { shouldFocus: true },
           ),
-      }
-    )
-  }
+      },
+    );
+  };
 
   const handleChange = (value: string, fn: (value: string) => void) => {
-    submitShippingOption(value)
-    fn(value)
-  }
+    submitShippingOption(value);
+    fn(value);
+  };
 
   // Memoized shipping method options
   const shippingMethods: ShippingOption[] = useMemo(() => {
@@ -84,22 +84,23 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
           amount: option.amount || 0,
           region: cart.region,
         }),
-      }))
+      }));
     }
 
-    return []
-  }, [shipping_options, cart])
+    return [];
+  }, [shipping_options, cart]);
 
   const {
     sameAsBilling: { state: sameBilling },
-  } = useCheckout()
+  } = useCheckout();
 
   return (
     <StepContainer
       index={sameBilling ? 2 : 3}
       title="Delivery"
+      className="bg-primary-foreground text-primary"
       closedState={
-        <div className="px-8 pb-8 text-small-regular">
+        <div className="text-small-regular bg-primary px-8 pb-8 text-primary-foreground">
           <p>Enter your address to see available delivery options.</p>
         </div>
       }
@@ -121,10 +122,10 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
                         key={option.value}
                         value={option.value}
                         className={clsx(
-                          "flex items-center justify-between text-small-regular cursor-pointer py-4 border-b border-gray-200 last:border-b-0 px-8",
+                          "text-small-regular flex cursor-pointer items-center justify-between border-b border-primary-foreground px-8 py-4 last:border-b-0",
                           {
-                            "bg-gray-50": option.value === value,
-                          }
+                            "bg-secondary": option.value === value,
+                          },
                         )}
                       >
                         <div className="flex items-center gap-x-4">
@@ -133,14 +134,14 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
                             {option.label}
                           </span>
                         </div>
-                        <span className="justify-self-end text-gray-700">
+                        <span className="justify-self-end text-primary">
                           {option.price}
                         </span>
                       </RadioGroup.Option>
-                    )
+                    );
                   })
                 ) : (
-                  <div className="flex flex-col items-center justify-center px-4 py-8 text-gray-900">
+                  <div className="flex flex-col items-center justify-center px-4 py-8 text-primary">
                     <Spinner />
                   </div>
                 )}
@@ -150,18 +151,18 @@ const Shipping: React.FC<ShippingProps> = ({ cart }) => {
                 name="soId"
                 render={({ message }) => {
                   return (
-                    <div className="pt-2 text-rose-500 text-small-regular">
+                    <div className="text-small-regular pt-2 text-rose-500">
                       <span>{message}</span>
                     </div>
-                  )
+                  );
                 }}
               />
             </div>
-          )
+          );
         }}
       />
     </StepContainer>
-  )
-}
+  );
+};
 
-export default Shipping
+export default Shipping;

@@ -1,6 +1,6 @@
-import { ErrorMessage } from "@hookform/error-message"
-import ChevronDown from "@/components/common/icons/chevron-down"
-import clsx from "clsx"
+import { ErrorMessage } from "@hookform/error-message";
+import ChevronDown from "@/components/common/icons/chevron-down";
+import clsx from "clsx";
 import {
   forwardRef,
   SelectHTMLAttributes,
@@ -8,14 +8,14 @@ import {
   useImperativeHandle,
   useRef,
   useState,
-} from "react"
-import { get } from "react-hook-form"
+} from "react";
+import { get } from "react-hook-form";
 
 export type NativeSelectProps = {
-  placeholder?: string
-  errors?: Record<string, unknown>
-  touched?: Record<string, unknown>
-} & SelectHTMLAttributes<HTMLSelectElement>
+  placeholder?: string;
+  errors?: Record<string, unknown>;
+  touched?: Record<string, unknown>;
+} & SelectHTMLAttributes<HTMLSelectElement>;
 
 const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
@@ -27,27 +27,27 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const innerRef = useRef<HTMLSelectElement>(null)
-    const [isPlaceholder, setIsPlaceholder] = useState(false)
+    const innerRef = useRef<HTMLSelectElement>(null);
+    const [isPlaceholder, setIsPlaceholder] = useState(false);
 
     useImperativeHandle<HTMLSelectElement | null, HTMLSelectElement | null>(
       ref,
-      () => innerRef.current
-    )
+      () => innerRef.current,
+    );
 
     const hasError = props.name
       ? get(errors, props.name) && get(touched, props.name)
-      : false
+      : false;
 
     useEffect(() => {
       if (innerRef.current && innerRef.current.value === "") {
-        setIsPlaceholder(true)
+        setIsPlaceholder(true);
       } else {
-        setIsPlaceholder(false)
+        setIsPlaceholder(false);
       }
-    }, [innerRef.current?.value])
+    }, [innerRef.current?.value]);
 
     return (
       <div>
@@ -55,22 +55,22 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           onFocus={() => innerRef.current?.focus()}
           onBlur={() => innerRef.current?.blur()}
           className={clsx(
-            "relative flex items-center text-base-regular border border-gray-200",
+            "text-base-regular relative flex items-center border border-gray-200 bg-primary text-primary-foreground",
             className,
             {
               "text-gray-500": isPlaceholder,
-            }
+            },
           )}
         >
           <select
             ref={innerRef}
             {...props}
-            className="appearance-none flex-1 bg-transparent border-none px-4 py-2.5 transition-colors duration-150 focus:border-gray-700 outline-none"
+            className="flex-1 appearance-none border-none bg-primary px-4 py-2.5 text-primary-foreground outline-none transition-colors duration-150 focus:border-gray-700"
           >
             <option value="">{placeholder}</option>
             {children}
           </select>
-          <span className="absolute right-4 inset-y-0 flex items-center pointer-events-none">
+          <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
             <ChevronDown />
           </span>
         </div>
@@ -80,18 +80,18 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             name={props.name}
             render={({ message }) => {
               return (
-                <div className="pt-1 pl-2 text-rose-500 text-xsmall-regular">
+                <div className="text-xsmall-regular pl-2 pt-1 text-rose-500">
                   <span>{message}</span>
                 </div>
-              )
+              );
             }}
           />
         )}
       </div>
-    )
-  }
-)
+    );
+  },
+);
 
-NativeSelect.displayName = "NativeSelect"
+NativeSelect.displayName = "NativeSelect";
 
-export default NativeSelect
+export default NativeSelect;

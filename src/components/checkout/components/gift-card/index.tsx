@@ -1,39 +1,39 @@
-import { Cart } from "@medusajs/medusa"
-import Button from "@/components/common/components/button"
-import Input from "@/components/common/components/input"
-import Trash from "@/components/common/icons/trash"
-import { useCart } from "medusa-react"
-import React, { useMemo } from "react"
-import { useForm } from "react-hook-form"
+import { Cart } from "@medusajs/medusa";
+import Button from "@/components/common/components/button";
+import Input from "@/components/common/components/input";
+import Trash from "@/components/common/icons/trash";
+import { useCart } from "medusa-react";
+import React, { useMemo } from "react";
+import { useForm } from "react-hook-form";
 
 type GiftCardFormValues = {
-  gift_card_code: string
-}
+  gift_card_code: string;
+};
 
 type GiftCardProps = {
-  cart?: Omit<Cart, "refundable_amount" | "refunded_total">
-}
+  cart?: Omit<Cart, "refundable_amount" | "refunded_total">;
+};
 
 const GiftCard: React.FC<GiftCardProps> = ({ cart }) => {
   const {
     updateCart: { mutate, isLoading },
     setCart,
-  } = useCart()
+  } = useCart();
 
   const {
     register,
     handleSubmit,
     formState: { touchedFields, errors },
     setError,
-  } = useForm<GiftCardFormValues>()
+  } = useForm<GiftCardFormValues>();
 
   const appliedGiftCard = useMemo(() => {
     if (!cart || !cart.gift_cards?.length) {
-      return undefined
+      return undefined;
     }
 
-    return cart.gift_cards[0].code
-  }, [cart])
+    return cart.gift_cards[0].code;
+  }, [cart]);
 
   const onSubmit = (data: GiftCardFormValues) => {
     mutate(
@@ -50,12 +50,12 @@ const GiftCard: React.FC<GiftCardProps> = ({ cart }) => {
             },
             {
               shouldFocus: true,
-            }
-          )
+            },
+          );
         },
-      }
-    )
-  }
+      },
+    );
+  };
 
   const onRemove = () => {
     mutate(
@@ -64,12 +64,12 @@ const GiftCard: React.FC<GiftCardProps> = ({ cart }) => {
       },
       {
         onSuccess: ({ cart }) => setCart(cart),
-      }
-    )
-  }
+      },
+    );
+  };
 
   return (
-    <div className="w-full bg-white p-6 flex flex-col">
+    <div className="flex w-full flex-col bg-primary-foreground p-6">
       <div className="mb-4">
         <h3 className="text-base-semi">Gift Card</h3>
       </div>
@@ -104,7 +104,7 @@ const GiftCard: React.FC<GiftCardProps> = ({ cart }) => {
               />
               <div>
                 <Button
-                  className="!min-h-[0] h-[46px] w-[80px]"
+                  className="h-[46px] !min-h-[0] w-[80px]"
                   disabled={isLoading}
                   isLoading={isLoading}
                 >
@@ -116,7 +116,7 @@ const GiftCard: React.FC<GiftCardProps> = ({ cart }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GiftCard
+export default GiftCard;

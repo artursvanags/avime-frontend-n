@@ -1,52 +1,52 @@
-import { ErrorMessage } from "@hookform/error-message"
-import Eye from "@/components/common/icons/eye"
-import EyeOff from "@/components/common/icons/eye-off"
-import clsx from "clsx"
-import React, { useEffect, useImperativeHandle, useState } from "react"
-import { get } from "react-hook-form"
+import { ErrorMessage } from "@hookform/error-message";
+import Eye from "@/components/common/icons/eye";
+import EyeOff from "@/components/common/icons/eye-off";
+import clsx from "clsx";
+import React, { useEffect, useImperativeHandle, useState } from "react";
+import { get } from "react-hook-form";
 
 type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "placeholder"
 > & {
-  label: string
-  errors?: Record<string, unknown>
-  touched?: Record<string, unknown>
-  name: string
-}
+  label: string;
+  errors?: Record<string, unknown>;
+  touched?: Record<string, unknown>;
+  name: string;
+};
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ type, name, label, errors, touched, required, ...props }, ref) => {
-    const inputRef = React.useRef<HTMLInputElement>(null)
-    const [showPassword, setShowPassword] = useState(false)
-    const [inputType, setInputType] = useState(type)
+    const inputRef = React.useRef<HTMLInputElement>(null);
+    const [showPassword, setShowPassword] = useState(false);
+    const [inputType, setInputType] = useState(type);
 
     useEffect(() => {
       if (type === "password" && showPassword) {
-        setInputType("text")
+        setInputType("text");
       }
 
       if (type === "password" && !showPassword) {
-        setInputType("password")
+        setInputType("password");
       }
-    }, [type, showPassword])
+    }, [type, showPassword]);
 
-    useImperativeHandle(ref, () => inputRef.current!)
+    useImperativeHandle(ref, () => inputRef.current!);
 
-    const hasError = get(errors, name) && get(touched, name)
+    const hasError = get(errors, name) && get(touched, name);
 
     return (
       <div>
-        <div className="relative z-0 w-full text-base-regular">
+        <div className="text-base-regular relative z-0 w-full">
           <input
             type={inputType}
             name={name}
             placeholder=" "
             className={clsx(
-              "pt-4 pb-1 block w-full px-4 mt-0 bg-transparent border appearance-none focus:outline-none focus:ring-0 focus:border-gray-400 border-gray-200",
+              "mt-0 block w-full appearance-none border border-gray-200 bg-primary px-4 pb-1 pt-4 text-primary-foreground focus:border-gray-400 focus:outline-none focus:ring-0",
               {
                 "border-rose-500 focus:border-rose-500": hasError,
-              }
+              },
             )}
             {...props}
             ref={inputRef}
@@ -55,10 +55,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             htmlFor={name}
             onClick={() => inputRef.current?.focus()}
             className={clsx(
-              "mx-3 px-1 transition-all absolute duration-300 top-3 -z-1 origin-0 text-gray-500",
+              "-z-1 origin-0 absolute top-3 mx-3 px-1 text-gray-500 transition-all duration-300",
               {
                 "!text-rose-500": hasError,
-              }
+              },
             )}
           >
             {label}
@@ -68,7 +68,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="text-gray-400 px-4 focus:outline-none transition-all duration-150 outline-none focus:text-gray-700 absolute right-0 top-3"
+              className="absolute right-0 top-3 px-4 text-gray-400 outline-none transition-all duration-150 focus:text-gray-700 focus:outline-none"
             >
               {showPassword ? <Eye /> : <EyeOff />}
             </button>
@@ -80,18 +80,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             name={name}
             render={({ message }) => {
               return (
-                <div className="pt-1 pl-2 text-rose-500 text-xsmall-regular">
+                <div className="text-xsmall-regular pl-2 pt-1 text-rose-500">
                   <span>{message}</span>
                 </div>
-              )
+              );
             }}
           />
         )}
       </div>
-    )
-  }
-)
+    );
+  },
+);
 
-Input.displayName = "Input"
+Input.displayName = "Input";
 
-export default Input
+export default Input;

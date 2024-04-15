@@ -1,13 +1,13 @@
-import { CheckoutFormValues } from "@/lib/context/checkout-context"
-import { emailRegex } from "@/lib/util/regex"
-import ConnectForm from "@/components/common/components/connect-form"
-import Input from "@/components/common/components/input"
-import { useMeCustomer } from "medusa-react"
-import AddressSelect from "../address-select"
-import CountrySelect from "../country-select"
+import { CheckoutFormValues } from "@/lib/context/checkout-context";
+import { emailRegex } from "@/lib/util/regex";
+import ConnectForm from "@/components/common/components/connect-form";
+import Input from "@/components/common/components/input";
+import { useMeCustomer } from "medusa-react";
+import AddressSelect from "../address-select";
+import CountrySelect from "../country-select";
 
 const ShippingAddress = () => {
-  const { customer } = useMeCustomer()
+  const { customer } = useMeCustomer();
   return (
     <div>
       {customer && (customer.shipping_addresses?.length || 0) > 0 && (
@@ -31,7 +31,7 @@ const ShippingAddress = () => {
               errors={errors}
               touched={touchedFields}
             />
-            <div className="grid grid-cols-2 gap-x-2">
+            <div className="grid grid-cols-2 gap-x-2 text-primary-foreground">
               <Input
                 label="First name"
                 {...register("shipping_address.first_name", {
@@ -120,7 +120,7 @@ const ShippingAddress = () => {
         )}
       </ConnectForm>
     </div>
-  )
-}
+  );
+};
 
-export default ShippingAddress
+export default ShippingAddress;
