@@ -96,6 +96,11 @@ const Item = ({ item, region }: ItemProps) => {
                   </Link>
                 </h3>
                 {/* <LineItemOptions variant={item.variant} /> */}
+                {item.metadata && item.metadata.text && (
+                  <div className="text-xs text-muted-foreground">
+                    Personalized text: {item.metadata.text}
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-1 justify-end">

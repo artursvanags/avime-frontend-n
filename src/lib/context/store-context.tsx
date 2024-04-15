@@ -16,11 +16,13 @@ import { useSearchParams } from "next/navigation"
 interface VariantInfoProps {
   variantId: string
   quantity: number
+  metadata?: Record<string, unknown> | null;
 }
 
 interface LineInfoProps {
   lineId: string
   quantity: number
+  metadata?: Record<string, unknown> | null;
 }
 
 interface StoreContext {
@@ -243,14 +245,17 @@ export const StoreProvider = ({ children }: StoreProps) => {
   const addItem = ({
     variantId,
     quantity,
+    metadata,
   }: {
     variantId: string
     quantity: number
+    metadata?: Record<string, unknown> | null;
   }) => {
     addLineItem.mutate(
       {
         variant_id: variantId,
         quantity: quantity,
+        metadata: metadata ?? undefined,
       },
       {
         onSuccess: ({ cart }) => {

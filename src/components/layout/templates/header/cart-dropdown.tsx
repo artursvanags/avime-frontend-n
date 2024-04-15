@@ -37,7 +37,6 @@ const ItemSelect: React.FC<{ item: any }> = ({ item }) => {
       quantity: updatedQuantity,
     });
   };
-
   return (
     <div className="flex items-center">
       <Button
@@ -121,27 +120,32 @@ const CartDropdown: React.FC<CartDropDownProps> = ({ cart, closeDropdown }) => {
                               {item.title}
                             </Link>
                           </h3>
+                          {item.metadata && item.metadata.text && (
+                            <div className="text-xs text-muted-foreground">
+                              Personalized text: {item.metadata.text}
+                            </div>
+                          )}
                           {/* <LineItemOptions variant={item.variant} /> */}
                         </div>
 
-                        <div className="justify-end text-sm flex flex-1">
-                        <div className=" text-xs justify-end flex  items-center text-muted-foreground pr-2">{item.quantity} x</div>
+                        <div className="flex flex-1 justify-end text-sm">
+                          <div className=" flex items-center justify-end  pr-2 text-xs text-muted-foreground">
+                            {item.quantity} x
+                          </div>
                           <LineItemPrice region={cart.region} item={item} />
-                         
                         </div>
-                        
                       </div>
                       <div className=" flex flex-1 items-end gap-x-1 py-1 text-sm ">
-                          <ItemSelect item={item} />
-                            <Button
-                              className="flex items-center gap-x-1 h-7 "
-                              size={"sm"}
-                              variant={"secondary"}
-                              onClick={() => deleteItem(item.id)}
-                            >
-                              Remove
-                            </Button>
-                          </div>
+                        <ItemSelect item={item} />
+                        <Button
+                          className="flex h-7 items-center gap-x-1 "
+                          size={"sm"}
+                          variant={"secondary"}
+                          onClick={() => deleteItem(item.id)}
+                        >
+                          Remove
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>

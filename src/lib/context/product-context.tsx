@@ -26,7 +26,7 @@ interface ProductContext {
   updateOptions: (options: Record<string, string>) => void
   increaseQuantity: () => void
   decreaseQuantity: () => void
-  addToCart: () => void
+  addToCart: (additionalParams?: Record<string, any>) => void
 }
 
 const ProductActionContext = createContext<ProductContext | null>(null)
@@ -121,11 +121,12 @@ export const ProductProvider = ({
     setOptions({ ...options, ...update })
   }
 
-  const addToCart = () => {
+  const addToCart = (metadata?: Record<string, any>) => {
     if (variant) {
       addItem({
         variantId: variant.id,
         quantity,
+        ...metadata,
       })
     }
   }

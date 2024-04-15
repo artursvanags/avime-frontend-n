@@ -11,6 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 import { MyAccount, Spinner } from "@/config/icons";
+import { Input } from "@/components/ui/input";
 
 type ProductActionsProps = {
   product: PricedProduct;
@@ -25,18 +26,28 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   const [adding, setAdding] = useState(false);
   const [added, setAdded] = useState(false);
   const [buttonText, setButtonText] = useState("Add to cart");
+  const [personalizedText, setPersonalizedText] = useState<string | null>(null);
 
   const selectedPrice = useMemo(() => {
     const { variantPrice, cheapestPrice } = price;
 
     return variantPrice || cheapestPrice || null;
   }, [price]);
-
   const handleAddToCart = () => {
     setAdding(true);
 
     // Call the addToCart function
-    addToCart();
+    if (
+      product.metadata &&
+      product.metadata.is_custom === "true" &&
+      personalizedText !== null &&
+      personalizedText !== ""
+    ) {
+      // Assuming personalizedText is defined elsewhere in the scope correctly
+      addToCart({metadata: {text: personalizedText}});
+    } else {
+      addToCart();
+    }
 
     // Simulate a delay of 2-3 seconds before marking as added
     setTimeout(() => {
@@ -59,17 +70,17 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
   function ShowLoginWindow() {
     return (
-      <div className="w-full rounded border p-4 border-amber-500/50 bg-amber-700/5">
-        <p className=" text-sm text-muted-foreground pb-4">
+      <div className="w-full rounded border border-amber-500/50 bg-amber-700/5 p-4">
+        <p className=" pb-4 text-sm text-muted-foreground">
           It looks like you are not signed-in. Please sign in to be able to add
           to cart and view pricing!
         </p>
         <Button asChild className="w-full dark:bg-amber-50" size={"xl"}>
-            <Link href="/account/login">
-              <MyAccount.Login className="mr-2 h-4 w-4" />
-              Sign in
-            </Link>
-          </Button>
+          <Link href="/account/login">
+            <MyAccount.Login className="mr-2 h-4 w-4" />
+            Sign in
+          </Link>
+        </Button>
       </div>
     );
   }
@@ -141,10 +152,26 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
         </div>
       )}
 
+      {/* Product personalizable */}
+      {!retrievingCustomer && customer && product.metadata?.is_custom === "true" && (
+        <div>
+          <Input
+            type="text"
+            placeholder="Enter your personalized text here"
+            value={personalizedText || ""}
+            onChange={(e) => setPersonalizedText(e.target.value)}
+          />
+        </div>
+        )}
+
       {/* Product button*/}
       <div className="flex flex-col pt-3">
         {!retrievingCustomer && customer ? (
-          <Button size={"xl"} onClick={handleAddToCart} disabled={adding}>
+          <Button
+            size={"xl"}
+            onClick={() => handleAddToCart()}
+            disabled={adding}
+          >
             {adding ? (
               <>
                 <Spinner className="mr-2 h-5 w-5 animate-spin" />
