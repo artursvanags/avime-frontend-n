@@ -5,6 +5,9 @@ import React, { useRef } from "react";
 import ImageGallery from "../components/image-gallary";
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import ProductActions from "../components/product-actions";
+import { useRouter } from 'next/navigation'
+
+import { Button } from "@/components/ui/button";
 
 type ProductTemplateProps = {
   product: PricedProduct;

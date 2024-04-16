@@ -1,38 +1,38 @@
-import CollectionTemplate from "@/components/collections/templates"
-import { Metadata } from "next"
-import { notFound } from "next/navigation"
+import CollectionTemplate from "@/components/collections/templates";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 type Props = {
-  params: { handle: string }
-}
+  params: { handle: string };
+};
 
-const BASEURL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:8000"
+const BASEURL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:8000";
 
 async function getCollection(handle: string) {
-  const res = await fetch(`${BASEURL}/collections?handle=${handle}`)
+  const res = await fetch(`${BASEURL}/collections?handle=${handle}`);
 
   if (!res.ok) {
-    notFound()
+    notFound();
   }
 
-  return res.json()
+  return res.json();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { collection } = await getCollection(params.handle)
+  const { collection } = await getCollection(params.handle);
 
   if (!collection) {
-    notFound()
+    notFound();
   }
 
   return {
-    title: `${collection.title} | Acme Store`,
+    title: `${collection.title} | Avime Store`,
     description: `${collection.title} collection`,
-  }
+  };
 }
 
 export default async function CollectionPage({ params }: Props) {
-  const { collection } = await getCollection(params.handle)
+  const { collection } = await getCollection(params.handle);
 
-  return <CollectionTemplate collection={collection} />
+  return <CollectionTemplate collection={collection} />;
 }

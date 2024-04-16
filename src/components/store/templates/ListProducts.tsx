@@ -48,7 +48,7 @@ export default function ListProducts() {
             <div className=" container space-y-12">
               <div>
                 <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
-                  Packages
+                  Step 1 - Choose your package
                 </h2>
                 <Grid className="grid-cols-1 pb-5 lg:grid-cols-2">
                   <ProductCardHorizontal
@@ -63,18 +63,44 @@ export default function ListProducts() {
                   make the most out of your photos.
                 </div>
                 <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
-                  Prints
+                  Step 2 - Add ons
                 </h2>
+                <h2 className="pb-12 font-heading text-2xl">Products</h2>
                 <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
                   <ProductCard products={products} productMeta={"is_print"} />
                 </Grid>
               </div>
               <div>
-                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
-                  Products
-                </h2>
+                <h2 className="pb-12 font-heading text-2xl">Prints</h2>
                 <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
                   <ProductCard products={products} productMeta={"is_product"} />
+                </Grid>
+              </div>
+              <div>
+                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
+                  Sibling Photos
+                </h2>
+                <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+                  <ProductCard products={products} productMeta={"is_sibling"} />
+                </Grid>
+              </div>
+              <div>
+                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
+                  Sibling Photo Addons
+                </h2>
+                <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+                  <ProductCard
+                    products={products}
+                    productMeta={"is_sibling_addons"}
+                  />
+                </Grid>
+              </div>
+              <div>
+                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
+                  Custom
+                </h2>
+                <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+                  <ProductCard products={products} productMeta={"is_custom"} />
                 </Grid>
               </div>
             </div>

@@ -12,12 +12,14 @@ import { ToastAction } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 import { MyAccount, Spinner } from "@/config/icons";
 import { Input } from "@/components/ui/input";
-
+import { useRouter } from "next/navigation";
 type ProductActionsProps = {
   product: PricedProduct;
 };
 
-const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
+const ProductActions: React.FC<ProductActionsProps> = ({
+  product,
+}) => {
   const { updateOptions, addToCart, options, inStock, variant } =
     useProductActions();
   const { customer, retrievingCustomer } = useAccount();
@@ -27,7 +29,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   const [added, setAdded] = useState(false);
   const [buttonText, setButtonText] = useState("Add to cart");
   const [personalizedText, setPersonalizedText] = useState<string | null>(null);
-
+  const router = useRouter();
   const selectedPrice = useMemo(() => {
     const { variantPrice, cheapestPrice } = price;
 
@@ -44,7 +46,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       personalizedText !== ""
     ) {
       // Assuming personalizedText is defined elsewhere in the scope correctly
-      addToCart({metadata: {text: personalizedText}});
+      addToCart({ metadata: { text: personalizedText } });
     } else {
       addToCart();
     }
@@ -65,7 +67,10 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           </ToastAction>
         ),
       });
-    }, 2000); // Delay for 2 seconds (2000 milliseconds)
+    }, 2000);
+    setTimeout(() => {
+      router.back();
+    }, 2000);
   };
 
   function ShowLoginWindow() {
@@ -153,15 +158,17 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       )}
 
       {/* Product personalizable */}
-      {!retrievingCustomer && customer && product.metadata?.is_custom === "true" && (
-        <div>
-          <Input
-            type="text"
-            placeholder="Enter your personalized text here"
-            value={personalizedText || ""}
-            onChange={(e) => setPersonalizedText(e.target.value)}
-          />
-        </div>
+      {!retrievingCustomer &&
+        customer &&
+        product.metadata?.is_custom === "true" && (
+          <div>
+            <Input
+              type="text"
+              placeholder="Enter your personalized text here"
+              value={personalizedText || ""}
+              onChange={(e) => setPersonalizedText(e.target.value)}
+            />
+          </div>
         )}
 
       {/* Product button*/}

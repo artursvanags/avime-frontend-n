@@ -7,7 +7,7 @@ import { formatAmount, useCart } from "medusa-react";
 import Link from "next/link";
 import Image from "next/image";
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { Cart } from "@medusajs/medusa";
+import { Cart, Region } from "@medusajs/medusa";
 import { useRouter } from "next/navigation";
 import {
   Select,
@@ -71,7 +71,12 @@ const CartDropdown: React.FC<CartDropDownProps> = ({ cart, closeDropdown }) => {
   const items = useEnrichedLineItems();
   const { deleteItem } = useStore();
   const router = useRouter();
-
+  const total = (amount: number | undefined, region: Region) =>
+    formatAmount({
+      amount: amount || 0,
+      region: region,
+      includeTaxes: false,
+    });
   const handleItemClick = (link: string) => {
     router.push(link);
     closeDropdown();
@@ -156,14 +161,9 @@ const CartDropdown: React.FC<CartDropDownProps> = ({ cart, closeDropdown }) => {
             <div className="flex items-center justify-between">
               <div className=" text-lg font-normal">Total</div>
               <div className=" font-heading text-2xl">
-                {formatAmount({
-                  amount: cart.subtotal || 0,
-                  region: cart.region,
-                  includeTaxes: false,
-                })}
+                {total(cart.subtotal, cart.region)}
               </div>
             </div>
-
             <div className="flex space-x-2 pt-4">
               <Button
                 className="flex-grow"
@@ -174,12 +174,27 @@ const CartDropdown: React.FC<CartDropDownProps> = ({ cart, closeDropdown }) => {
                 Go to Cart
               </Button>
               <Button
+                disabled={cart.subtotal && cart.subtotal > 3000 ? false : true}
                 className="flex-grow"
                 onClick={() => handleItemClick("/checkout")}
                 size={"xl"}
               >
                 Checkout
               </Button>
+            </div>
+            <div>
+              {cart.subtotal && cart.subtotal < 3000 && (
+                <div className="pt-2 text-xs text-muted-foreground">
+                  <p>Minimum cart total required: {total(3000, cart.region)}</p>
+                  <p>
+                    Remaining to add:{" "}
+                    {total(
+                      Math.max(0, 3000 - (cart.subtotal || 0)),
+                      cart.region,
+                    )}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </>

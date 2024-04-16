@@ -48,9 +48,9 @@ const Register = () => {
           <Spinner size={24} />
         </div>
       )}
-      <h1 className="text-large-semi mb-6 uppercase">Become a Acme Member</h1>
+      <h1 className="text-large-semi mb-6 uppercase">Become a Avime Member</h1>
       <p className="text-base-regular mb-4 text-center text-gray-700">
-        Create your Acme Member profile, and get access to an enhanced shopping
+        Create your Avime Member profile, and get access to an enhanced shopping
         experience.
       </p>
       <form className="flex w-full flex-col" onSubmit={onSubmit}>
@@ -99,7 +99,7 @@ const Register = () => {
           </div>
         )}
         <span className="text-small-regular mt-6 text-center text-gray-700">
-          By creating an account, you agree to Acme&apos;s{" "}
+          By creating an account, you agree to Avime&apos;s{" "}
           <Link href="/content/privacy-policy" className="underline">
             Privacy Policy
           </Link>{" "}
