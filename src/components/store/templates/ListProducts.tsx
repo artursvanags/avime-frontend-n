@@ -94,15 +94,7 @@ export default function ListProducts() {
                     productMeta={"is_sibling_addons"}
                   />
                 </Grid>
-              </div>
-              <div>
-                <h2 className="pb-12 font-heading text-4xl underline decoration-2 underline-offset-4">
-                  Custom
-                </h2>
-                <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-                  <ProductCard products={products} productMeta={"is_custom"} />
-                </Grid>
-              </div>
+              </div> 
             </div>
           ) : null}
         </>
