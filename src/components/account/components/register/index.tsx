@@ -44,7 +44,7 @@ const Register = () => {
   return (
     <div className="mt-12 flex max-w-sm flex-col items-center">
       {isSubmitting && (
-        <div className="fixed inset-0 z-10 flex items-center justify-center bg-white bg-opacity-50">
+        <div className="fixed inset-0 z-10 flex items-center justify-center  bg-opacity-50">
           <Spinner size={24} />
         </div>
       )}

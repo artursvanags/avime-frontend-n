@@ -1,12 +1,12 @@
-import Button from "@/components/common/components/button"
-import Link from "next/link"
+import Button from "@/components/common/components/button";
+import Link from "next/link";
 
 const SignInPrompt = () => {
   return (
-    <div className="bg-white flex items-start justify-between">
+    <div className=" flex items-start justify-between">
       <div>
         <h2 className="text-xl-semi">Already have an account?</h2>
-        <p className="text-base-regular text-gray-700 mt-2">
+        <p className="text-base-regular mt-2 text-gray-700">
           Sign in for a better experience.
         </p>
       </div>
@@ -16,7 +16,7 @@ const SignInPrompt = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignInPrompt
+export default SignInPrompt;
