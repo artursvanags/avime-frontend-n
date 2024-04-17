@@ -67,13 +67,13 @@ export default function ListProducts() {
                 </h2>
                 <h2 className="pb-12 font-heading text-2xl">Products</h2>
                 <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-                  <ProductCard products={products} productMeta={"is_print"} />
+                  <ProductCard products={products} productMeta={"is_product"} />
                 </Grid>
               </div>
               <div>
                 <h2 className="pb-12 font-heading text-2xl">Prints</h2>
                 <Grid className="grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-                  <ProductCard products={products} productMeta={"is_product"} />
+                  <ProductCard products={products} productMeta={"is_print"} />
                 </Grid>
               </div>
               <div>
