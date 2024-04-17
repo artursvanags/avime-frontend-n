@@ -10,7 +10,7 @@ import { TailwindIndicator } from "@/lib/tailwind-indicator";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { Toaster } from "@/components/ui/toaster";
-
+import { Analytics } from "@vercel/analytics/react";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -64,6 +64,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Toaster />
           </ThemeProvider>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
