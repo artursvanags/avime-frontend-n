@@ -174,7 +174,7 @@ const CartDropdown: React.FC<CartDropDownProps> = ({ cart, closeDropdown }) => {
                 Go to Cart
               </Button>
               <Button
-                disabled={cart.subtotal && cart.subtotal > 3000 ? false : true}
+                disabled={cart.subtotal && cart.subtotal >= 3000 ? false : true}
                 className="flex-grow"
                 onClick={() => handleItemClick("/checkout")}
                 size={"xl"}
@@ -183,7 +183,7 @@ const CartDropdown: React.FC<CartDropDownProps> = ({ cart, closeDropdown }) => {
               </Button>
             </div>
             <div>
-              {cart.subtotal && cart.subtotal < 3000 && (
+              {cart.subtotal && cart.subtotal <= 3000 && (
                 <div className="pt-2 text-xs text-muted-foreground">
                   <p>Minimum cart total required: {total(3000, cart.region)}</p>
                   <p>

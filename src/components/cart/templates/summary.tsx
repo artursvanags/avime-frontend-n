@@ -21,13 +21,13 @@ const Summary = ({ cart }: SummaryProps) => {
     <div className="grid grid-cols-1 gap-y-6">
       <CartTotals cart={cart} />
       <Button
-        disabled={cart.subtotal && cart.subtotal < 3000 ? true : false}
+        disabled={cart.subtotal && cart.subtotal <= 3000 ? true : false}
         size="xl"
         onClick={() => router.push("/checkout")}
       >
         Go to checkout
       </Button>
-      {cart.subtotal && cart.subtotal < 3000 && (
+      {cart.subtotal && cart.subtotal <= 3000 && (
         <div className="text-muted-foreground">
           <p>Minimum cart total required: {total(3000, cart.region)}</p>
           <p>
