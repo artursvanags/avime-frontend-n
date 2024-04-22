@@ -77,7 +77,7 @@ export const ContactUs = () => {
               hello@avime.au
             </Link>
           </Button>
-          <Button
+          {/* <Button
             size="xl"
             className="w-full rounded-2xl text-lg font-semibold md:w-[18rem]"
             asChild
@@ -89,7 +89,7 @@ export const ContactUs = () => {
               <ContactsIcons.Phone className="mr-2 h-6 w-6" />
               07 3522 2750
             </Link>
-          </Button>
+          </Button> */}
         </div>
         <span className="pt-2 text-sm">
           (Business hours: 9am - 5pm on weekdays)
