@@ -36,18 +36,22 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
     return 0;
   });
 
-  const GetPrice = ({ product }: { product: MedusaProduct | PricedProduct }) => {
+  const GetPrice = ({
+    product,
+  }: {
+    product: MedusaProduct | PricedProduct;
+  }) => {
     const { cheapestPrice } = useProductPrice({
       id: product.id!,
       variantId: product.variants[0].id,
     });
     return cheapestPrice;
-  }
+  };
 
   return (
     <>
       {filteredProducts.map((p) => {
-          const cheapestPrice = GetPrice({ product: p });
+        const cheapestPrice = GetPrice({ product: p });
 
         return (
           <Grid.Item key={p.id}>
@@ -98,6 +102,11 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
                 </div>
                 <div className="whitespace-pre-line pt-3 text-justify text-sm">
                   {p.description}
+                  {p.metadata?.is_digital && (
+                    <div className="text-xs text-muted-foreground">
+                      Digital Product
+                    </div>
+                  )}
                 </div>
               </div>
             </Link>
