@@ -60,15 +60,22 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
               className="relative grid h-full w-full grid-cols-10 gap-6 p-2 transition-colors hover:bg-stone-100 dark:bg-transparent dark:hover:bg-stone-900"
             >
               <Icons.Layers className="absolute right-2 top-2 hidden text-muted-foreground lg:block" />
-              <div className="col-span-4 aspect-square">
-                <Image
-                  src={p?.thumbnail || "/default-image.jpg"}
-                  width={420}
-                  height={420}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                  alt={p.title ?? "Product Title"}
-                />
+              <div className="col-span-4">
+                <div className="relative aspect-square">
+                  <Image
+                    src={p?.thumbnail || "/default-image.jpg"}
+                    width={420}
+                    height={420}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                    alt={p.title ?? "Product Title"}
+                  />
+                  {p.metadata?.is_digital === "true" && (
+                    <div className="absolute bg-primary-foreground border rounded top-2 right-2 p-2 text-xs text-muted-foreground">
+                      + Digital download
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="col-span-6">
@@ -102,11 +109,6 @@ export function ProductCardHorizontal({ products, productMeta }: CardProp) {
                 </div>
                 <div className="whitespace-pre-line pt-3 text-justify text-sm">
                   {p.description}
-                  {p.metadata?.is_digital && (
-                    <div className="text-xs text-muted-foreground">
-                      Digital Product
-                    </div>
-                  )}
                 </div>
               </div>
             </Link>
