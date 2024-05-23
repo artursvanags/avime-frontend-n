@@ -22,9 +22,13 @@ export function SearchFront({ onSearch, loading, error }: SearchFrontProps) {
   });
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    const encodedKey = inputValue
-      ? Buffer.from(inputValue).toString("base64")
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearch = async (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const encodedKey = searchTerm
+      ? Buffer.from(searchTerm).toString("base64")
       : null;
 
     const newSearchParams = new URLSearchParams();
@@ -34,12 +38,6 @@ export function SearchFront({ onSearch, loading, error }: SearchFrontProps) {
     }
 
     router.push(`?${newSearchParams.toString()}`);
-
-    setSearchTerm(inputValue);
-  };
-
-  const handleSearch = async (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
     onSearch(searchTerm);
   };
 
