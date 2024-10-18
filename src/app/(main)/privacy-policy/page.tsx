@@ -198,6 +198,23 @@ export default function Page() {
         </section>
         <section>
           <h2 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
+            Use of Third-Party Software and Access to Photos
+          </h2>
+          <p>
+            We may use third-party software services to enhance and support the
+            functionality of our application. These third-party services may, in
+            certain instances, require access to your photos to provide
+            specific features or services. Any access to your photos will only
+            occur with your explicit consent and will be used solely for the
+            purposes described when the access is requested. We ensure that our
+            third-party partners adhere to the same high standards of privacy
+            and data protection that we do, and your personal data, including
+            your photos, will never be shared or used for purposes beyond the
+            scope of the services provided.
+          </p>
+        </section>
+        <section>
+          <h2 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
             AUSTRALIAN PRIVACY PRINCIPLE 2 - ANONYMITY AND PSEUDONYMITY
           </h2>
           <p>
